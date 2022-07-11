@@ -1,0 +1,112 @@
+body {
+	background-color: #f2f2f2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 18px;
+	flex-direction: column;
+  }
+
+  .card {
+	width: 100%;
+	max-width: 970px;
+	max-height: 575px;
+	background-color: #fff;
+	border-radius: 32px;
+	box-sizing: border-box;
+	padding: 38px 48px 48px 62px;
+
+	h1,
+	h2 {
+	  text-align: center;
+	}
+
+	h1 {
+	  font-size: 36px;
+	  font-weight: 600;
+	  line-height: 44px;
+	  margin: 0;
+	  padding: 0;
+	}
+
+	h2 {
+	  line-height: 22px;
+	  font-size: 18px;
+	  padding: 0;
+	  margin: 0;
+	  margin-bottom: 22px;
+	}
+
+	&__content {
+	  overflow-y: scroll;
+	  max-height: 300px;
+
+	  &::-webkit-scrollbar {
+		width: 10px; /* ширина всей полосы прокрутки */
+	  }
+
+	  &::-webkit-scrollbar-track {
+		background: #fff; /* цвет зоны отслеживания */
+	  }
+
+	  &::-webkit-scrollbar-thumb {
+		background-color: #f2f2f2; /* цвет бегунка */
+		border-radius: 20px; /* округлось бегунка */
+	  }
+	}
+  }
+
+  ul {
+	counter-reset: number -1;
+
+	li {
+	  position: relative;
+	  list-style: none;
+	  padding: 24px 0;
+
+	  &::before {
+		position: absolute;
+		counter-increment: number;
+		content: counter(number);
+		left: -20px;
+		font-weight: 700;
+	  }
+
+	  &:first-child {
+		padding-top: 0;
+	  }
+
+	  &:not(:last-child) {
+		&::after {
+		  position: absolute;
+		  content: "";
+		  top: 100%;
+		  left: 0;
+		  height: 1px;
+		  width: 100%;
+		  background-color: #e8e8e8;
+		}
+	  }
+	}
+  }
+
+  .btn__holder {
+	width: 100%;
+	max-width: 970px;
+	height: 144px;
+	background-color: #fff;
+	border-radius: 32px;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 24px;
+  }
+
+  .btn {
+	background-color: #9d7df4;
+	border-radius: 16px;
+	color: #fff;
+	padding: 16px 24px;
+	border: none;
+  }

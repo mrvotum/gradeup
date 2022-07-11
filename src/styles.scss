@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+// @import "../node_modules/normalize-scss/sass/normalize/import-now";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+$color-white-smoke: #F2F2F2;
+
+.layout {
+	background-color: $color-white-smoke;
+	padding: 24px;
+	min-height: 99vh;
+	box-sizing: border-box;
+	display: flex;
+    flex-direction: column;
+	font-family: 'Inter', sans-serif;
+	font-size: 18px;
+	align-items: center;
+}
+
+.main-header {
+	display: flex;
+	justify-content: space-between;
+	align-self: normal;
+	margin-bottom: 28px;
+
+	.logo {}
+
+	.about {}
+}
+
+.main-footer {
+	margin-top: auto;
+	align-self: flex-start;
+}
