@@ -2,10 +2,30 @@
 // @import "../node_modules/normalize-scss/sass/normalize/import-now";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-$color-white-smoke: #F2F2F2;
+// Переменные
+:root {
+	--color-white: #FFFFFF;
+	--color-black: #000000;
+	--color-white-smoke: #F2F2F2;
+
+	--color-medium-purple: #9D7DF4;
+	--color-medium-slate-blue: #835CEE;
+	--color-purple-heart: #633BCF;
+
+	// Цвета для быстрого обращения
+	--color-primary: var(--color-medium-purple);
+	--color-primary--hover: var(--color-medium-slate-blue);
+	--color-primary--active: var(--color-purple-heart);
+
+	// Цвета для быстрого обращения
+	--color-primary: #9D7DF4;
+	--color-primary--hover: #835CEE;
+	--color-primary--active: #633BCF;
+}
+
 
 .layout {
-	background-color: $color-white-smoke;
+	background-color: var(--color-white-smoke);
 	padding: 24px;
 	min-height: 99vh;
 	box-sizing: border-box;
@@ -24,7 +44,22 @@ $color-white-smoke: #F2F2F2;
 
 	.logo {}
 
-	.about {}
+	.about a {
+		text-decoration: none;
+		transition: color 0.2s ease-in-out;
+
+		&:visited {
+			color: var(--color-black);
+		}
+
+		&:active {
+			color: var(--color-primary--active);
+		}
+
+		&:hover {
+			color: var(--color-primary--hover);
+		}
+	}
 }
 
 .main-footer {
