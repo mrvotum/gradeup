@@ -1,18 +1,27 @@
 .btn__holder {
 	width: 100%;
 	max-width: 970px;
-	height: 144px;
+	// height: 144px;
+	padding: 38px;
 	background-color: var(--color-white);
 	border-radius: 32px;
 	box-sizing: border-box;
 	display: flex;
-	justify-content: center;
 	align-items: center;
+	justify-content: space-between;
+
+	&--instruction {
+		justify-content: center;
+	}
 }
 
-.btn {
+.btn--next,
+.btn--start,
+.btn--results {
 	background-color: var(--color-primary);
 	color: var(--color-white);
+	text-decoration: none;
+	text-align: center;
 
 	&:hover {
 		background-color: var(--color-primary--hover);
@@ -20,5 +29,83 @@
 
 	&:active {
 		background-color: var(--color-primary--active);
+	}
+
+	&[disabled] {
+		background-color: var(--color-primary--disable);
+		pointer-events: none;
+	}
+}
+
+.btn--hidden {
+	display: none;
+}
+
+.progress-bar {
+	position: relative;
+	width: calc(100% - (214px + 83px) * 2);
+	max-width: 300px;
+
+	&__wrapper {
+		overflow: hidden;
+		border-radius: 50px;
+		background-color: var(--color-secondary);
+		height: 10px;
+	}
+
+	&__el {
+		position: relative;
+		height: 100%;
+		width: 0;
+		border-radius: 50px;
+
+		&--ready {
+			background-color: var(--color-primary--disable);
+		}
+
+		&--current {
+			position: absolute;
+			background-color: var(--color-primary);
+			top: 0;
+			left: 0;
+			z-index: 1;
+		}
+	}
+
+	&__info {
+		position: absolute;
+		background-color: var(--color-secondary);
+		padding: 4px 10px;
+		border-radius: 50px;
+		font-size: 12px;
+		line-height: 150%;
+		font-weight: 600;
+		width: fit-content;
+		transform: translateX(-50%);
+		top: 20px;
+
+		&::before {
+			position: absolute;
+			content: '';
+			width: 18px;
+			height: 6px;
+			background-image: url('/assets/images/progress-arrow.svg');
+			bottom: 100%;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		span {
+			display: inline-block;
+			box-sizing: border-box;
+		}
+
+		&-current {
+			margin-right: 4px;
+		}
+
+		&-total {
+			margin-left: 4px;
+		}
 	}
 }

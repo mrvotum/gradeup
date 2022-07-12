@@ -1,0 +1,30 @@
+.card {
+	width: 100%;
+	max-width: 970px;
+	background-color: var(--color-primary);
+	border-radius: 32px;
+	padding-top: 38px;
+	padding-bottom: 42px;
+
+	.btn__wrapper {
+		display: flex;
+		justify-content: center;
+	}
+
+	.btn {
+		display: inline-block;
+		min-width: auto;
+		padding: 23px 24px;
+		text-decoration: none;
+
+		&:visited,
+		&:hover,
+		&:active {
+			color: var(--color-black);
+		}
+	}
+
+	.btn + .btn {
+		margin-left: 24px;
+	}
+}

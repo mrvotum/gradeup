@@ -1,3 +1,23 @@
-<div class="btn__holder">
-	<button class="btn">Начать текст</button>
+<div class="btn__holder" *ngIf="isQuizStarted; else showInstruction">
+	<button class="btn" (click)="showPrev()">Назад</button>
+	<div class="progress-bar">
+		<div class="progress-bar__wrapper">
+			<div class="progress-bar__el progress-bar__el--current" style="width: 7%;"></div>
+			<div class="progress-bar__el progress-bar__el--ready" style="width: 52%;"></div>
+		</div>
+		<div class="progress-bar__info" style="left: 7%;">
+			<span class="progress-bar__info-current">4</span>
+			<span>из</span>
+			<span class="progress-bar__info-total">27</span>
+		</div>
+	</div>
+	<button class="btn btn--next" (click)="showNext()">Дальше</button>
+	<a class="btn btn--results btn--hidden" routerLink="/results" (click)="showResults()">Показать результаты</a>
 </div>
+
+<!-- Нужен для события, когда сверуз прилетает false -->
+<ng-template #showInstruction>
+	<div class="btn__holder btn__holder--instruction">
+		<a class="btn btn--start" routerLink="/questions" (click)="startQuiz()">Начать текст</a>
+	</div>
+</ng-template>

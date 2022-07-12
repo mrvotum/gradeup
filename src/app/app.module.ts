@@ -6,13 +6,19 @@ import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { CardComponent } from './card/card.component';
 import { CardPanelComponent } from './card-panel/card-panel.component';
+import { CardSubscribeComponent } from './card-subscribe/card-subscribe.component';
+import { CardInstructionComponent } from './card-instruction/card-instruction.component';
+import { ResultsPageComponent } from './results-page/results-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
     CardComponent,
-    CardPanelComponent
+    CardPanelComponent,
+    CardSubscribeComponent,
+    CardInstructionComponent,
+    ResultsPageComponent
   ],
   imports: [
     BrowserModule,

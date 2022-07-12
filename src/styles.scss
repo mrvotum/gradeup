@@ -7,24 +7,34 @@
 	--color-white: #FFFFFF;
 	--color-black: #000000;
 	--color-white-smoke: #F2F2F2;
-	--color-whisper: #E8E8E8;
+	--color-whisper: #E9E9E9;
+	--color-very-light-grey: #CECECE;
+	--color-gainsboro: #D9D9D9;
 
 	--color-medium-purple: #9D7DF4;
 	--color-medium-slate-blue: #835CEE;
 	--color-purple-heart: #633BCF;
+	--color-fog: #D8CBFB;
 
 	// Цвета для быстрого обращения
 	--color-primary: var(--color-medium-purple);
 	--color-primary--hover: var(--color-medium-slate-blue);
 	--color-primary--active: var(--color-purple-heart);
+	--color-primary--disable: var(--color-fog);
+
+	--color-secondary: var(--color-white-smoke);
+	--color-secondary--hover: var(--color-whisper);
+	--color-secondary--active: var(--color-gainsboro);
+
 	--color-body: var(--color-white-smoke);
+
 
 	--root-font-size: 18px;
 }
 
 
 .layout {
-	background-color: var(--color-white-smoke);
+	background-color: var(--color-body);
 	padding: 24px;
 	min-height: 99vh;
 	box-sizing: border-box;
@@ -80,8 +90,67 @@
 	font-size: var(--root-font-size);
 	line-height: 120%;
 	border-radius: 16px;
-	padding: 23px 54px;
+	padding: 23px 16px;
+	min-width: 214px;
 	border: none;
 	cursor: pointer;
 	transition: background-color 0.2s ease-in-out;
+	background-color: var(--color-secondary);
+
+	&:hover {
+		background-color: var(--color-secondary--hover);
+	}
+
+	&:active {
+		background-color: var(--color-secondary--active);
+	}
+}
+
+div {
+	box-sizing: border-box;
+}
+
+
+.card {
+	width: 100%;
+	max-width: 970px;
+	border-radius: 32px;
+	box-sizing: border-box;
+	font-size: var(--root-font-size);
+	margin-bottom: 24px;
+	margin-bottom: 1.3em;
+
+	&__title {
+		text-align: center;
+		margin-bottom: 2.2em;
+
+		.title {
+			font-size: 2em;
+			font-weight: 600;
+			line-height: 120%;
+			margin: 0;
+			padding: 0;
+		}
+
+		.sub-title {
+			font-size: 1em;
+			line-height: 120%;
+			padding: 0;
+			margin: 0;
+			font-weight: 400;
+		}
+
+		.title + .sub-title {
+			margin-top: 0.65em;
+			margin-top: 12px;
+		}
+
+		.sub-title + .title {
+			margin-top: 0.22em;
+		}
+
+		&--invert {
+			color: var(--color-white)
+		}
+	}
 }

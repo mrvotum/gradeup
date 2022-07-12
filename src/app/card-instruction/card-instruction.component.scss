@@ -1,0 +1,10 @@
+@import '../card/card.component.scss';
+
+.card {
+	padding: 38px 8px 50px 62px;
+
+	.card__title {
+		// Выравниваем
+		padding-right: calc(62px - 8px);
+	}
+}
