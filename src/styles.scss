@@ -7,6 +7,7 @@
 	--color-white: #FFFFFF;
 	--color-black: #000000;
 	--color-white-smoke: #F2F2F2;
+	--color-whisper: #E8E8E8;
 
 	--color-medium-purple: #9D7DF4;
 	--color-medium-slate-blue: #835CEE;
@@ -16,11 +17,9 @@
 	--color-primary: var(--color-medium-purple);
 	--color-primary--hover: var(--color-medium-slate-blue);
 	--color-primary--active: var(--color-purple-heart);
+	--color-body: var(--color-white-smoke);
 
-	// Цвета для быстрого обращения
-	--color-primary: #9D7DF4;
-	--color-primary--hover: #835CEE;
-	--color-primary--active: #633BCF;
+	--root-font-size: 18px;
 }
 
 
@@ -40,7 +39,6 @@
 	display: flex;
 	justify-content: space-between;
 	align-self: normal;
-	margin-bottom: 28px;
 
 	.logo {}
 

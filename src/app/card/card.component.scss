@@ -1,139 +1,150 @@
 body {
-	background-color: #f2f2f2;
+	background-color: var(--color-body);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	font-size: 18px;
 	flex-direction: column;
-  }
+}
 
-  .card {
+.card {
 	position: relative;
 	width: 100%;
 	max-width: 970px;
 	height: fit-content;
-	max-height: 575px;
-	background-color: #fff;
+	// -панель с кнопкой и отступом -внутренние отступы layout'а
+	max-height: calc(100vh - (144px + 40px) - 24px * 2);
+	background-color: var(--color-white);
 	border-radius: 32px;
 	box-sizing: border-box;
-	padding: 38px 62px 0 90px;
+	padding: 38px 8px 50px 62px;
+	font-size: var(--root-font-size);
+	margin-top: -28px;
 
 	&::before {
-	  position: absolute;
-	  content: "";
-	  width: calc(100% - 38px * 2);
-	  height: 50px;
-	  border-radius: 32px;
-	  background-color: #f8f8f8;
-	  left: 38px;
-	  top: calc(100% - 34px);
-	  z-index: -1;
+		position: absolute;
+		content: "";
+		width: calc(100% - 38px * 2);
+		height: 50px;
+		border-radius: 32px;
+		background-color: #f8f8f8;
+		left: 38px;
+		top: calc(100% - 34px);
+		z-index: -1;
 	}
 
 	h1,
 	h2 {
-	  text-align: center;
+		text-align: center;
 	}
 
 	h1 {
-	  font-size: 36px;
-	  font-weight: 600;
-	  line-height: 44px;
-	  margin: 0;
-	  padding: 0;
+		font-size: 2em;
+		font-weight: 600;
+		line-height: 120%;
+		margin: 0;
+		padding: 0;
+		margin-bottom: 0.32em;
 	}
 
 	h2 {
-	  line-height: 22px;
-	  font-size: 18px;
-	  padding: 0;
-	  margin: 0;
-	  margin-bottom: 22px;
+		font-size: 1em;
+		line-height: 120%;
+		padding: 0;
+		margin: 0;
+		margin-bottom: 1.2em;
+		font-weight: 400;
 	}
 
 	&__content {
-	  overflow-y: scroll;
-	  max-height: 450px;
+		overflow-y: scroll;
 
-	  &::-webkit-scrollbar {
-		width: 10px; /* ширина всей полосы прокрутки */
-	  }
+		&::-webkit-scrollbar {
+			width: 10px; /* ширина всей полосы прокрутки */
+		}
 
-	  &::-webkit-scrollbar-track {
-		background: #fff; /* цвет зоны отслеживания */
-	  }
+		&::-webkit-scrollbar-track {
+			background: var(--color-white); /* цвет зоны отслеживания */
+		}
 
-	  &::-webkit-scrollbar-thumb {
-		background-color: #f2f2f2; /* цвет бегунка */
-		border-radius: 20px; /* округлось бегунка */
-	  }
+		&::-webkit-scrollbar-thumb {
+			background-color: var(--color-white-smoke); /* цвет бегунка */
+			border-radius: 20px; /* округлось бегунка */
+		}
 	}
-  }
+}
 
-  ul {
+ul {
 	counter-reset: number -1;
-	padding-left: 20px;
+	padding-left: 28px;
 	padding-right: 30px;
 
 	li {
-	  position: relative;
-	  list-style: none;
-	  padding: 24px 0;
+		position: relative;
+		list-style: none;
+		padding: 24px 0;
+		line-height: 150%;
+		font-weight: 300;
 
-	  &::before {
-		position: absolute;
-		counter-increment: number;
-		content: counter(number);
-		left: -20px;
-		font-weight: 700;
-	  }
-
-	  &:first-child {
-		padding-top: 0;
-	  }
-
-	  &:not(:last-child) {
-		&::after {
-		  position: absolute;
-		  content: "";
-		  top: 100%;
-		  left: 0;
-		  height: 1px;
-		  width: 100%;
-		  background-color: #e8e8e8;
+		&::before {
+			position: absolute;
+			counter-increment: number;
+			content: counter(number);
+			right: calc(100% + 16px);
+			font-weight: 700;
 		}
-	  }
-	}
-  }
 
-  .btn__holder {
+		&:first-child {
+			padding-top: 0;
+		}
+
+		&:not(:last-child) {
+			&::after {
+				position: absolute;
+				content: "";
+				top: 100%;
+				left: 0;
+				height: 1px;
+				width: 100%;
+				background-color: var(--color-whisper);
+			}
+		}
+
+		strong {
+			font-weight: 600;
+		}
+	}
+}
+
+.btn__holder {
 	width: 100%;
 	max-width: 970px;
 	height: 144px;
-	background-color: #fff;
+	background-color: var(--color-white);
 	border-radius: 32px;
 	box-sizing: border-box;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin-top: 40px;
-  }
+}
 
-  .btn {
+.btn {
 	background-color: var(--color-primary);
-
+	font-size: var(--root-font-size);
+	line-height: 120%;
 	border-radius: 16px;
-	color: #fff;
-	padding: 16px 24px;
+	color: var(--color-white);
+	padding: 23px 54px;
 	border: none;
 	cursor: pointer;
 	transition: background-color 0.2s ease-in-out;
 
 	&:hover {
-	  background-color: var(--color-primary--hover);
+		background-color: var(--color-primary--hover);
 	}
 
 	&:active {
-	  background-color: var(--color-primary--active);
+		background-color: var(--color-primary--active);
 	}
-  }
+}
