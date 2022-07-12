@@ -1,0 +1,24 @@
+.btn__holder {
+	width: 100%;
+	max-width: 970px;
+	height: 144px;
+	background-color: var(--color-white);
+	border-radius: 32px;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.btn {
+	background-color: var(--color-primary);
+	color: var(--color-white);
+
+	&:hover {
+		background-color: var(--color-primary--hover);
+	}
+
+	&:active {
+		background-color: var(--color-primary--active);
+	}
+}

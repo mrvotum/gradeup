@@ -11,27 +11,15 @@ body {
 	position: relative;
 	width: 100%;
 	max-width: 970px;
-	height: fit-content;
+	// height: fit-content;
 	// -панель с кнопкой и отступом -внутренние отступы layout'а
-	max-height: calc(100vh - (144px + 40px) - 24px * 2);
+	max-height: calc(100vh - (144px + 40px) - 24px * 2 - 22px);
 	background-color: var(--color-white);
 	border-radius: 32px;
 	box-sizing: border-box;
 	padding: 38px 8px 50px 62px;
 	font-size: var(--root-font-size);
 	margin-top: -28px;
-
-	&::before {
-		position: absolute;
-		content: "";
-		width: calc(100% - 38px * 2);
-		height: 50px;
-		border-radius: 32px;
-		background-color: #f8f8f8;
-		left: 38px;
-		top: calc(100% - 34px);
-		z-index: -1;
-	}
 
 	h1,
 	h2 {
@@ -57,6 +45,9 @@ body {
 	}
 
 	&__content {
+		height: 100%;
+		// (родительские отступы карточки) -отступы -~заголовки
+		max-height: calc((100vh - (144px + 40px) - 24px * 2 - 22px) - 88px - 2.32em - 2.2em);
 		overflow-y: scroll;
 
 		&::-webkit-scrollbar {
@@ -113,38 +104,5 @@ ul {
 		strong {
 			font-weight: 600;
 		}
-	}
-}
-
-.btn__holder {
-	width: 100%;
-	max-width: 970px;
-	height: 144px;
-	background-color: var(--color-white);
-	border-radius: 32px;
-	box-sizing: border-box;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: 40px;
-}
-
-.btn {
-	background-color: var(--color-primary);
-	font-size: var(--root-font-size);
-	line-height: 120%;
-	border-radius: 16px;
-	color: var(--color-white);
-	padding: 23px 54px;
-	border: none;
-	cursor: pointer;
-	transition: background-color 0.2s ease-in-out;
-
-	&:hover {
-		background-color: var(--color-primary--hover);
-	}
-
-	&:active {
-		background-color: var(--color-primary--active);
 	}
 }

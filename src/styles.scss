@@ -33,6 +33,17 @@
 	font-family: 'Inter', sans-serif;
 	font-size: 18px;
 	align-items: center;
+	margin: 0;
+}
+
+.app-root {
+	display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 110px);
+}
+
+.app-card-panel {
+	margin-top: auto;
 }
 
 .main-header {
@@ -63,4 +74,14 @@
 .main-footer {
 	margin-top: auto;
 	align-self: flex-start;
+}
+
+.btn {
+	font-size: var(--root-font-size);
+	line-height: 120%;
+	border-radius: 16px;
+	padding: 23px 54px;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.2s ease-in-out;
 }
