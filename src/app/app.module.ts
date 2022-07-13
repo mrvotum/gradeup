@@ -9,6 +9,7 @@ import { CardPanelComponent } from './card-panel/card-panel.component';
 import { CardSubscribeComponent } from './card-subscribe/card-subscribe.component';
 import { CardInstructionComponent } from './card-instruction/card-instruction.component';
 import { ResultsPageComponent } from './results-page/results-page.component';
+import { CardResultComponent } from './card-result/card-result.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ResultsPageComponent } from './results-page/results-page.component';
     CardPanelComponent,
     CardSubscribeComponent,
     CardInstructionComponent,
-    ResultsPageComponent
+    ResultsPageComponent,
+    CardResultComponent
   ],
   imports: [
     BrowserModule,

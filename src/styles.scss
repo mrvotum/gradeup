@@ -5,7 +5,7 @@
 // Переменные
 :root {
 	--color-white: #FFFFFF;
-	--color-black: #000000;
+	--color-black: #201C28;
 	--color-white-smoke: #F2F2F2;
 	--color-whisper: #E9E9E9;
 	--color-very-light-grey: #CECECE;
@@ -112,13 +112,15 @@ div {
 
 
 .card {
-	width: 100%;
+	width: 100vw;
 	max-width: 970px;
 	border-radius: 32px;
 	box-sizing: border-box;
 	font-size: var(--root-font-size);
 	margin-bottom: 24px;
 	margin-bottom: 1.3em;
+	background-color: var(--color-white);
+	padding: 38px 38px 45px 38px;
 
 	&__title {
 		text-align: center;
