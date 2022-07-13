@@ -1,9 +1,9 @@
 <div class="btn__holder" *ngIf="isQuizStarted; else showInstruction">
-	<button class="btn" (click)="showPrev()">Назад</button>
+	<button class="btn" (click)="changeQuestion(false)" [disabled]="disabled">Назад</button>
 	<div class="progress-bar">
 		<div class="progress-bar__wrapper">
 			<div class="progress-bar__el progress-bar__el--current" [attr.style]="progressInfo.currentQuestionWidth" ></div>
-			<!-- <div class="progress-bar__el progress-bar__el--ready" style="width: 52%;"></div> -->
+			<div class="progress-bar__el progress-bar__el--ready" [attr.style]="progressInfo.answeredQuestionWidth"></div>
 		</div>
 		<div class="progress-bar__info" [attr.style]="progressInfo.currentQuestionLeft">
 			<span class="progress-bar__info-current">{{ currentQuestion }}</span>
@@ -11,7 +11,7 @@
 			<span id="questions-total" class="progress-bar__info-total">{{questionsCount}}</span>
 		</div>
 	</div>
-	<button class="btn btn--next" (click)="showNext()">Дальше</button>
+	<button class="btn btn--next" (click)="changeQuestion(true)">Дальше</button>
 	<a class="btn btn--results btn--hidden" routerLink="/results" (click)="showResults()">Узнать результаты</a>
 </div>
 

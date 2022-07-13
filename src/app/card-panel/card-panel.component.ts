@@ -15,12 +15,14 @@ export class CardPanelComponent implements OnInit {
   currentQuestionPercent: Number = 1;
 
   progressInfo = {
+    answeredQuestionWidth: 'width: 100%',
     currentQuestionWidth: 'width: 0%',
     currentQuestionLeft: 'left: 0%'
   };
 
   isQuizStarted = false;
   isFirstSearch = true;
+  disabled = true;
 
   constructor() { }
 
@@ -32,7 +34,7 @@ export class CardPanelComponent implements OnInit {
         if (!document.querySelector('body--results')) {
           this.questionsCount = this.questions.length;
 
-          this.initProgressBar();
+          // this.initProgressBar();
           this.convertCountToPercent();
         }
       }
@@ -47,30 +49,19 @@ export class CardPanelComponent implements OnInit {
         this.questions = document.getElementsByClassName('card');
         this.questionsCount = this.questions.length;
 
-        this.initProgressBar();
+        // this.initProgressBar();
+          this.convertCountToPercent();
       }, 100);
     }
   }
 
-  initProgressBar() {
-    console.log('keke');
-  }
+  // initProgressBar() {
+  //   console.log('keke');
+  // }
 
   showResults() {
     console.log('to results');
     document.querySelector('body')?.classList.add('body--results');
-  }
-
-  showPrev() {
-    console.log('prev');
-
-    this.changeQuestion(false);
-  }
-
-  showNext() {
-    console.log('next');
-
-    this.changeQuestion(true);
   }
 
   convertCountToPercent() {
@@ -92,6 +83,7 @@ export class CardPanelComponent implements OnInit {
 
       if (element.getAttribute('data-current') == 'true') {
         if (isNext) {
+          this.disabled = false;
           this.currentQuestion = Number(element.getAttribute('data-question-holder')) + 1;
         } else {
           this.currentQuestion = Number(element.getAttribute('data-question-holder')) - 1;
@@ -105,6 +97,10 @@ export class CardPanelComponent implements OnInit {
 
           nextQuestion?.classList.remove('card--hidden');
           nextQuestion?.setAttribute('data-current', 'true');
+
+          if (!isNext && nextQuestion.getAttribute('data-first') == 'true') {
+            this.disabled = true;
+          }
 
           if (nextQuestion?.getAttribute('data-last') == 'true') {
             // Показываем кнопку с результатами
