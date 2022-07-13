@@ -10,6 +10,7 @@ export class CardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    document.querySelector('body')?.classList.add('test-started');
   }
 
 }

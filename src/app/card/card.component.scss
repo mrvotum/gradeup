@@ -7,28 +7,44 @@
 	margin-top: -28px;
 	padding: 38px 38px 45px 38px;
 
+	overflow-y: scroll;
+
+	&::-webkit-scrollbar {
+		width: 10px; /* ширина всей полосы прокрутки */
+	}
+
+	&::-webkit-scrollbar-track {
+		background: transparent; /* цвет зоны отслеживания */
+		margin: 20px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: var(--color-white-smoke); /* цвет бегунка */
+		border-radius: 20px; /* округлось бегунка */
+	}
+
 	&--hidden {
 		display: none;
 	}
 
 	&__content {
-		height: 100%;
+		// height: 100%;
 		// (родительские отступы карточки) -отступы -~заголовки
-		max-height: calc((100vh - (144px + 40px) - 24px * 2 - 22px) - 88px - 2.32em - 2.2em);
-		overflow-y: scroll;
+		// max-height: calc((100vh - (144px + 40px) - 24px * 2 - 22px) - 88px - 2.32em - 2.2em);
+		// overflow-y: scroll;
 
-		&::-webkit-scrollbar {
-			width: 10px; /* ширина всей полосы прокрутки */
-		}
+		// &::-webkit-scrollbar {
+		// 	width: 10px; /* ширина всей полосы прокрутки */
+		// }
 
-		&::-webkit-scrollbar-track {
-			background: var(--color-white); /* цвет зоны отслеживания */
-		}
+		// &::-webkit-scrollbar-track {
+		// 	background: var(--color-white); /* цвет зоны отслеживания */
+		// }
 
-		&::-webkit-scrollbar-thumb {
-			background-color: var(--color-white-smoke); /* цвет бегунка */
-			border-radius: 20px; /* округлось бегунка */
-		}
+		// &::-webkit-scrollbar-thumb {
+		// 	background-color: var(--color-white-smoke); /* цвет бегунка */
+		// 	border-radius: 20px; /* округлось бегунка */
+		// }
 	}
 }
 
