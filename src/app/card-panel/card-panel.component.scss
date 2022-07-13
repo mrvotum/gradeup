@@ -60,6 +60,7 @@
 		height: 100%;
 		width: 0;
 		border-radius: 50px;
+		transition: width 0.4s ease-in-out;
 
 		&--ready {
 			background-color: var(--color-primary--disable);
@@ -85,6 +86,7 @@
 		width: fit-content;
 		transform: translateX(-50%);
 		top: 20px;
+		transition: left 0.4s ease-in-out;
 
 		&::before {
 			position: absolute;
