@@ -1,1 +1,26 @@
 <app-card-subscribe></app-card-subscribe>
+<div>
+	Ваш скриншот:
+	<div id="result"></div>
+
+	<span href="#" (click)="printScreen()" id="get_images">Сделать скриншот элемента</span>
+</div>
+
+<br>
+
+<div id="content" #content style="background-color: white; width: 600px; height: 400px; display: flex; justify-content: center; align-items: flex-start; flex-direction: column; padding-left: 40px; border: 2px solid black;">
+	<div style="background-color: rgb(255, 129, 129); height: 80px; width: 50%;">
+		<span style="color: white; margin: 20px; display: inline-block;">Софт 50%</span>
+	</div>
+	<br>
+	<div style="background-color: rgb(5, 22, 110); height: 80px; width: 20%;">
+		<span style="color: white; margin: 20px; display: inline-block;">Хард 80%</span>
+	</div>
+	<br>
+	<div style="background-color: rgb(186, 245, 172); height: 80px; width: 67%;">
+		<span style="color: white; margin: 20px; display: inline-block;">Другое 67%</span>
+	</div>
+</div>
+
+
+<button (click)="exportPDF()">Export to PDF</button>
