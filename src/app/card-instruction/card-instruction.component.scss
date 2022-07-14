@@ -3,8 +3,18 @@
 .card {
 	padding: 38px 8px 50px 62px;
 
-	.card__title {
+	&__title {
 		// Выравниваем
-		padding-right: calc(62px - 8px);
+		padding-right: 0;
+	}
+}
+
+@media screen and (max-width: 520px) {
+	.card {
+		padding: 0;
+
+		&__title {
+			padding-right: 0;
+		}
 	}
 }

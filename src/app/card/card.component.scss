@@ -1,9 +1,15 @@
+// Так как скролл не библиотечный и обладает минимальной гибкостью, приходится двигать его влияя на обёртку
+.wrapper {
+	background-color: var(--color-white);
+	border-radius: 32px;
+	padding-right: 8px;
+}
+
 .card {
 	position: relative;
 	// height: fit-content;
 	// -панель с кнопкой и отступом -внутренние отступы layout'а
 	max-height: calc(100vh - (144px + 40px) - 24px * 2 - 22px);
-	background-color: var(--color-white);
 	margin-top: -28px;
 
 	overflow-y: scroll;
@@ -90,6 +96,16 @@ ul {
 }
 
 .answer {
+	width: 100%;
+	display: inline-block;
+	margin-bottom: 16px;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.answer__el {
 	position: relative;
 	border: 2px solid var(--color-whisper);
 	border-radius: 16px;
@@ -100,11 +116,6 @@ ul {
     line-height: 120%;
 	box-sizing: border-box;
 	padding: 16px 24px 16px 24px;
-	margin-bottom: 16px;
-
-	&:last-child {
-		margin-bottom: 0;
-	}
 
 	&:hover {
 		border-color: var(--color-very-light-grey);
@@ -120,7 +131,38 @@ ul {
 input[type="radio"] {
 	display: none;
 }
-input[type="radio"]:checked + .answer {
+input[type="radio"]:checked + .answer__el {
 	border-color: var(--color-primary);
 	color: var(--color-primary);
+}
+
+@media screen and (max-width: 520px) {
+	.card {
+		margin-top: 0;
+		overflow: visible;
+		max-height: none;
+	}
+
+	ul {
+		padding-left: 30px;
+		padding-right: 24px;
+
+		li {
+			padding: 18px 0;
+
+			&::before {
+				right: calc(100% + 12px);
+			}
+
+			&:first-child {
+				padding-top: 16px;
+			}
+
+			&:not(:last-child) {
+				&::after {
+					width: calc(100% + 14px);
+				}
+			}
+		}
+	}
 }

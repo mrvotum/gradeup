@@ -15,6 +15,11 @@
 	}
 }
 
+.btn[disabled] {
+	background-color: var(--color-secondary);
+	pointer-events: none;
+}
+
 .btn--next,
 .btn--start,
 .btn--results {
@@ -36,11 +41,6 @@
 	&[disabled] {
 		background-color: var(--color-primary--disable);
 	}
-}
-
-.btn[disabled] {
-	background-color: var(--color-secondary);
-	pointer-events: none;
 }
 
 .btn--hidden {
@@ -114,6 +114,81 @@
 
 		&-total {
 			margin-left: 4px;
+		}
+	}
+}
+
+@media screen and (max-width: 520px) {
+	.btn__holder {
+		padding: 16px;
+		box-shadow: 0px -3px 16px rgba(0, 0, 0, 0.07);
+		border-radius: 24px 24px 0px 0px;
+		width: 100vw;
+	}
+
+	.progress-bar {
+		width: auto;
+
+		&__wrapper {
+			display: none;
+		}
+
+		&__el {
+			position: relative;
+			height: 100%;
+			width: 0;
+			border-radius: 50px;
+			transition: width 0.4s ease-in-out;
+
+			&--current {
+				position: absolute;
+				background-color: var(--color-primary);
+				top: 0;
+				left: 0;
+				z-index: 1;
+			}
+		}
+
+		&__info {
+			position: static;
+			background-color: var(--color-white);
+			padding: 0;
+			transform: none;
+			border-radius: 0;
+
+			&::before {
+				display: none;
+			}
+		}
+	}
+
+	.btn {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+
+	.btn--prev {
+		position: relative;
+		min-width: auto;
+		width: 48px;
+		height: 44px;
+
+		&::before {
+			position: absolute;
+			content: '';
+			top: 50%;
+			left: 50%;
+			transform: translate(calc(-50% + 2px), -50%) rotate(-45deg);
+			width: 7px;
+			height: 7px;
+			border: 2px solid var(--color-black);
+			border-right: none;
+			border-bottom: none;
+			border-radius: 2px;
+		}
+
+		.btn__text {
+			display: none;
 		}
 	}
 }
