@@ -5,7 +5,8 @@
 		[attr.data-questions-block]='i + 1'
 		[attr.data-question-holder]="question.questionCount"
 		[attr.data-current]="setAttributes('current', question.questionCount)"
-		[attr.data-first]="setAttributes('first', question.questionCount)">
+		[attr.data-first]="setAttributes('first', question.questionCount)"
+		[attr.data-last]="question.questionsEnd">
 
 		<div class="card__title">
 			<div class="sub-title">{{ block.theme }}</div>

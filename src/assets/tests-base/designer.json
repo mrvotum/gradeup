@@ -60,6 +60,7 @@
 				]
 			}, {
 				"title": "Вопрос третий в блоке, но шестой по порядку",
+				"questionsEnd": true,
 				"questionCount": 6,
 				"answers": [
 					"Непонимание",

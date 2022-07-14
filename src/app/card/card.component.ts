@@ -35,14 +35,6 @@ export class CardComponent implements OnInit {
     const allQuestionsCount = document.getElementsByClassName('card').length;
     let attrResult = null;
 
-    // if (attrName == 'current') {
-    //   attrResult = qstCount == 1 ? true : false;
-    // } else if (attrName == 'first') {
-    //   attrResult = qstCount == 1 ? true : false;
-    // } else if (attrName == 'last') {
-    //   attrResult = qstCount == allQuestionsCount ? true : false;
-    // }
-
     switch (attrName) {
       case 'first':
       case 'current':
