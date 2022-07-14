@@ -17,6 +17,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "html2canvas",
+              "canvg"
+           ],
             "outputPath": "dist/gradeup",
             "index": "src/index.html",
             "main": "src/main.ts",

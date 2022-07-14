@@ -54,6 +54,7 @@ export class CardPanelComponent implements OnInit {
   }
 
   showResults() {
+    console.log('calculating');
     document.querySelector('body')?.classList.add('body--results');
   }
 

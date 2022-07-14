@@ -9,7 +9,7 @@
 	position: relative;
 	// height: fit-content;
 	// -панель с кнопкой и отступом -внутренние отступы layout'а
-	max-height: calc(100vh - (144px + 40px) - 24px * 2 - 22px);
+	max-height: calc(100vh - (144px + 40px) - 24px * 2 + 16px);
 	margin-top: -28px;
 
 	overflow-y: scroll;
