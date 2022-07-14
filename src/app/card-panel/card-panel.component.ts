@@ -26,9 +26,11 @@ export class CardPanelComponent implements OnInit {
         this.isQuizStarted = !this.isQuizStarted;
 
         if (!document.querySelector('body--results')) {
-          this.service.progressInfo.questionsCount = this.questions.length;
+          setTimeout(() => {
+            this.service.progressInfo.questionsCount = this.questions.length;
 
-          this.convertCountToPercent();
+            this.convertCountToPercent();
+          }, 100);
         }
       }
     });
@@ -59,6 +61,10 @@ export class CardPanelComponent implements OnInit {
   convertCountToPercent() {
     this.questionsCountPercent = this.service.progressInfo.questionsCount;
     this.currentQuestionPercent = Number(this.service.progressInfo.currentQuestion) * 100 / Number(this.service.progressInfo.questionsCount);
+
+    console.log(Number(this.service.progressInfo.currentQuestion));
+    console.log(Number(this.service.progressInfo.questionsCount));
+    console.log(this.currentQuestionPercent);
 
     this.service.progressInfo.currentQuestionWidth = `width: ${this.currentQuestionPercent}%`;
     this.service.progressInfo.currentQuestionLeft = `left: ${this.currentQuestionPercent}%`;
