@@ -44,10 +44,8 @@ export class CardComponent implements OnInit {
     // }
 
     switch (attrName) {
-      case 'current':
-        attrResult = qstCount == 1 ? true : false;
-        break;
       case 'first':
+      case 'current':
         attrResult = qstCount == 1 ? true : false;
         break;
       case 'last':
