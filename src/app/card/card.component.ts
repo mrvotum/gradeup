@@ -6,7 +6,7 @@ import { TestReaderService } from '../test-reader.service';
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
-  providers: [ CardService, TestReaderService ]
+  // providers: [ CardService, TestReaderService ]
 })
 export class CardComponent implements OnInit {
   testDB: any = null;
@@ -48,17 +48,24 @@ export class CardComponent implements OnInit {
     return attrResult;
   }
 
-  unlockNextQuestion(nextQuestionIs: Number, islastQuestion: Boolean){
-    console.log('click to label');
-    console.log(`Следующий вопрос: ${nextQuestionIs}; Он последний? -> ${islastQuestion}`);
+  unlockNextQuestion(currentQuestionIs: Number, islastQuestion?: Boolean){
+    // console.log(`Текущий вопрос: ${currentQuestionIs}; Он последний? -> ${islastQuestion}`);
 
-    // this.service.progressInfo.currentQuestion = Number(nextQuestionIs) - 1;
+    if (this.service.questionsAnswered[0][`questionN${currentQuestionIs}`] == false) {
+      // Указываем следующий шаг прогрессбара
+      this.service.progressInfo.unlockedQuestionsCount += 1;
+      this.service.questionsAnswered[0][`questionN${currentQuestionIs}`] = true;
+      this.service.disabled.next = false;
+    }
+
+    this.service.progressInfo.currentQuestion = Number(currentQuestionIs);
+
+
+    // console.log(this.service.progressInfo.unlockedQuestionsCount);
 
     // console.log(`Текущи вопрос ${this.service.progressInfo.currentQuestion}`);
 
-    this.service.testKek();
-
-    this.service.disabled.next = false;
+    // this.service.disabled.next = false;
 
     // this.service.myCustomFunction();
  }

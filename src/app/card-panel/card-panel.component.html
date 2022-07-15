@@ -13,8 +13,8 @@
 			<span id="questions-total" class="progress-bar__info-total">{{service.progressInfo.questionsCount}}</span>
 		</div>
 	</div>
-	<button id="btn--next" class="btn btn--next" (click)="changeQuestion(true)"  >Дальше</button>
-	<a class="btn btn--results btn--hidden" routerLink="/results" (click)="showResults()">Узнать результаты</a>
+	<button id="btn--next" class="btn btn--next" (click)="changeQuestion(true)" [disabled]="service.disabled.next">Дальше</button>
+	<button class="btn btn--results btn--hidden" routerLink="/results" (click)="showResults()" [disabled]="service.disabled.next">Узнать результаты</button>
 	<a style="position: absolute; top: 0;" routerLink="/results" (click)="randomInfo()">Random info</a>
 </div>
 
@@ -24,16 +24,3 @@
 		<a class="btn btn--start" routerLink="/questions" (click)="startQuiz()">Начать текст</a>
 	</div>
 </ng-template>
-
-
-
-
-
-
-<div class="card">
-	<div class="test-kek">
-		<div class="test-kek__bar" *ngFor="let bar of statistic">
-			<div class="test-kek__bar-result" [attr.style]="bar.categoryResWidth"></div>
-		</div>
-	</div>
-</div>

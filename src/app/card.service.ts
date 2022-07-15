@@ -4,9 +4,14 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CardService {
+  statistic: any = [];
+
+  // Тут будет информация о том, какие вопросы уже пройдены
+  questionsAnswered: any = [];
+
   progressInfo = {
     // прогрес-бар: вопросов с ответами
-    answeredQuestionWidth: 'width: 100%',
+    answeredQuestionWidth: 'width: 00%',
     // прогрес-бар: текущий вопрос
     currentQuestionWidth: 'width: 0%',
     // подсказка прогрес-бара: текущий вопрос
@@ -14,9 +19,9 @@ export class CardService {
     // Номер вопроса на котором мы сейчас находимся (лежит в attr 'data-question-holder')
     currentQuestion: 1,
     // На сколько вопросов ответили
-    unlockedQuestionsCount: '',
+    unlockedQuestionsCount: 1,
     // Сколько вопросов в тесте всего
-    questionsCount: 0,
+    questionsCount: 1
   };
 
   // Блокировка кнопок перехода
@@ -29,25 +34,26 @@ export class CardService {
 
   constructor() { }
 
-  myCustomFunction() {
-    const kek = document.getElementById('btn--next');
+  // myCustomFunction() {
+  //   const kek = document.getElementById('btn--next');
 
-    if (kek?.getAttribute('disabled') && this.disabled.next === false) {
-      kek?.removeAttribute('disabled')
-    } else {
-      kek?.setAttribute('disabled', 'disabled');
-    }
-  }
-
-
+  //   if (kek?.getAttribute('disabled') && this.disabled.next === false) {
+  //     kek?.removeAttribute('disabled')
+  //   } else {
+  //     kek?.setAttribute('disabled', 'disabled');
+  //   }
+  // }
 
 
 
-  lolKek: String = 'This is old varriable in service';
 
-  testKek() {
+
+  public lolKek: String = 'This is old varriable in service';
+
+  showTestKek() {
+    console.log('=================SERVICE=================');
     console.log(this.lolKek);
-    // console.log(`Текущий вопрос ${this.progressInfo.currentQuestion}`);
+    console.log('=================SERVICE=================');
   }
 
   changeTestKek(message: String) {

@@ -13,7 +13,12 @@
 			<div class="title">{{ question.title }}</div>
 		</div>
 		<div class="card__content card__content--answers">
-			<label class="answer" [class.is-active]="!setAttributes('first', question.questionCount)" [attr.for]='createId("question", i, j, k)' *ngFor="let answer of question.answers; let k = index">
+			<label
+				class="answer" [class.is-active]="!setAttributes('first', question.questionCount)"
+				[attr.for]='createId("question", i, j, k)'
+				*ngFor="let answer of question.answers; let k = index"
+				(click)="unlockNextQuestion(question.questionCount, question.questionsEnd)">
+
 				<input type="radio" [attr.name]='createId("question", i, j)'  [attr.id]='createId("question", i, j, k)' value={{k}} [attr.data-questions-block]='i + 1'>
 				<span class="answer__el">
 					<strong>{{k}}</strong>{{answer}}

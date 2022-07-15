@@ -5,7 +5,7 @@ import { CardService } from '../card.service';
   selector: 'app-card-panel',
   templateUrl: './card-panel.component.html',
   styleUrls: ['./card-panel.component.scss'],
-  providers: [ CardService ]
+  // providers: [ CardService ]
 })
 export class CardPanelComponent implements OnInit {
   cards = document.querySelectorAll('.card');
@@ -14,37 +14,17 @@ export class CardPanelComponent implements OnInit {
   questions = document.getElementsByClassName('card');
   questionsCountPercent: Number = 0;
   currentQuestionPercent: Number = 1;
+  answeredQuestions: Number = 1;
 
   isQuizStarted = false;
   isFirstSearch = true;
-
-  statistic: any = [];
-
-  // Для теста пока так
-  // statistic: any = [
-  //   {
-  //     categorMaxScore1: 12,
-  //     category1: 10,
-  //   }, {
-  //     categorMaxScore2: 12,
-  //     category2: 6,
-  //   }
-  // ];
 
   constructor(public service: CardService) { }
 
   ngOnInit(): void {
     document.addEventListener('DOMContentLoaded', () => {
       if (document.querySelector('body.test-started')) {
-        this.isQuizStarted = !this.isQuizStarted;
-
-        if (!document.querySelector('body--results')) {
-          setTimeout(() => {
-            this.service.progressInfo.questionsCount = this.questions.length;
-
-            this.convertCountToPercent();
-          }, 100);
-        }
+        this.startQuiz()
 
         // Пока только для отладки
         document.addEventListener( 'keyup', event => {
@@ -54,14 +34,12 @@ export class CardPanelComponent implements OnInit {
     });
   }
 
-  unlockNextQuestion() {
-
-  }
+  unlockNextQuestion() { }
 
   randomInfo() {
     document.querySelector('body')?.classList.add('body--results');
 
-    this.statistic = [
+    this.service.statistic = [
       {
         categorMaxScore: 12,
         category: 10,
@@ -72,8 +50,6 @@ export class CardPanelComponent implements OnInit {
         categoryResWidth: `width: ${6 * 12 / 3}%`
       }
     ];
-
-    console.log(this.statistic);
   }
 
   startQuiz() {
@@ -83,15 +59,20 @@ export class CardPanelComponent implements OnInit {
       setTimeout(() => {
         this.questions = document.getElementsByClassName('card');
         this.service.progressInfo.questionsCount = this.questions.length;
+        const questionsAnswered: any = {};
 
-          this.convertCountToPercent();
+        for (let i = 0; i < this.questions.length; i++) {
+          questionsAnswered[`questionN${i + 1}`] = false;
+        }
+
+        this.service.questionsAnswered.push(questionsAnswered);
+
+        this.convertCountToPercent();
       }, 100);
     }
   }
 
   showResults() {
-    console.log('calculating');
-
     const questionsBlocks = document.querySelectorAll('.questions-block');
 
     const radioBtns = document.querySelectorAll('input[type="radio"]:checked');
@@ -113,20 +94,18 @@ export class CardPanelComponent implements OnInit {
         // Переводим результат в проценты
         categoryInfo['categoryResWidth'] = `width: ${(categoryScore * 100) / (element.length * 4)}%`;
 
-        this.statistic.push(categoryInfo);
+        this.service.statistic.push(categoryInfo);
 			}
 
 			radioBtns.forEach(element => {
 				maxScore = maxScore + Number(element.getAttribute('value'));
 			});
 
-			this.statistic.maxScore = radioBtns.length * 4;
+			this.service.statistic.maxScore = radioBtns.length * 4;
 		} else {
 			console.error('Не получилось найти отмеченные вопросы');
 			return;
 		}
-
-    console.log(this.statistic);
 
     document.querySelector('body')?.classList.add('body--results');
   }
@@ -134,17 +113,14 @@ export class CardPanelComponent implements OnInit {
   convertCountToPercent() {
     this.questionsCountPercent = this.service.progressInfo.questionsCount;
     this.currentQuestionPercent = Number(this.service.progressInfo.currentQuestion) * 100 / Number(this.service.progressInfo.questionsCount);
+    this.answeredQuestions = Number(this.service.progressInfo.unlockedQuestionsCount) * 100 / Number(this.service.progressInfo.questionsCount);
 
+    this.service.progressInfo.answeredQuestionWidth = `width: ${this.answeredQuestions}%`;
     this.service.progressInfo.currentQuestionWidth = `width: ${this.currentQuestionPercent}%`;
     this.service.progressInfo.currentQuestionLeft = `left: ${this.currentQuestionPercent}%`;
   }
 
   changeQuestion(isNext: boolean) {
-
-    // this.service.testKek();
-    // this.service.changeTestKek('lololololololo');
-    // this.service.testKek();
-
     if (this.isFirstSearch) {
       this.cards = document.querySelectorAll('.card');
       this.isFirstSearch = !this.isFirstSearch;
@@ -156,13 +132,20 @@ export class CardPanelComponent implements OnInit {
       if (element.getAttribute('data-current') == 'true') {
         if (isNext) {
           this.service.disabled.prev = false;
-          this.service.disabled.next = true;
-
-          // this.service.myCustomFunction();
 
           this.service.progressInfo.currentQuestion = Number(element.getAttribute('data-question-holder')) + 1;
+
+          // При шаге вперёд проверяем, отвечен ли текущий вопрос, чтобы блокировать или не блокировать кнопку
+          if (this.service.questionsAnswered[0][`questionN${i+2}`] == false) {
+            this.service.disabled.next = true;
+          }
         } else {
           this.service.progressInfo.currentQuestion = Number(element.getAttribute('data-question-holder')) - 1;
+
+          // При шаге назад проверяем, отвечен ли текущий вопрос, чтобы блокировать или не блокировать кнопку
+          if (this.service.questionsAnswered[0][`questionN${i+2}`] == false) {
+            this.service.disabled.next = false;
+          }
         }
 
         const nextQuestion = document.querySelector(`[data-question-holder='${this.service.progressInfo.currentQuestion}']`);
@@ -194,9 +177,6 @@ export class CardPanelComponent implements OnInit {
           // И возвращаем счётчик обратно
           this.service.progressInfo.currentQuestion = Number(element.getAttribute('data-question-holder'));
         }
-
-        this.service.testKek();
-        console.log(`Текущий вопрос#2 - ${this.service.progressInfo.currentQuestion}`);
 
         this.convertCountToPercent();
         return;
