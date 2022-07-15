@@ -1,7 +1,14 @@
 @import '../card/card.component.scss';
+// Так как скролл не библиотечный и обладает минимальной гибкостью, приходится двигать его влияя на обёртку
+.wrapper {
+	background-color: var(--color-white);
+	border-radius: 32px;
+	padding-right: 8px;
+}
 
 .card {
 	padding: 38px 8px 50px 62px;
+	background-color: transparent;
 
 	&__title {
 		// Выравниваем

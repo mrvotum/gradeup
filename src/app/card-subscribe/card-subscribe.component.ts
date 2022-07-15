@@ -11,5 +11,4 @@ export class CardSubscribeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

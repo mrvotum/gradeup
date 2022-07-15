@@ -1,7 +1,6 @@
 .btn__holder {
 	width: 100%;
 	max-width: 970px;
-	// height: 144px;
 	padding: 38px;
 	background-color: var(--color-white);
 	border-radius: 32px;
@@ -189,6 +188,38 @@
 
 		.btn__text {
 			display: none;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+.test-kek {
+	width: 100%;
+	max-width: 567px;
+	margin: 0 auto 60px;
+
+
+	&__bar {
+		position: relative;
+		margin-bottom: 24px;
+		background-color: #F4F4F4;
+		height: 80px;
+		width: 100%;
+
+		&-result {
+			position: absolute;
+			height: 100%;
+			background-color: #D9D9D9;
+			top: 0;
+			left: 0;
 		}
 	}
 }

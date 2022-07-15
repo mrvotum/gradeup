@@ -1,5 +1,5 @@
 // Так как скролл не библиотечный и обладает минимальной гибкостью, приходится двигать его влияя на обёртку
-.wrapper {
+.questions-block {
 	background-color: var(--color-white);
 	border-radius: 32px;
 	padding-right: 8px;
@@ -7,50 +7,34 @@
 
 .card {
 	position: relative;
-	// height: fit-content;
 	// -панель с кнопкой и отступом -внутренние отступы layout'а
-	max-height: calc(100vh - (144px + 40px) - 24px * 2 - 22px);
+	max-height: calc(100vh - (144px + 40px) - 24px * 2 + 16px);
 	margin-top: -28px;
 
 	overflow-y: scroll;
 
+	// Ширина всей полосы прокрутки
 	&::-webkit-scrollbar {
-		width: 10px; /* ширина всей полосы прокрутки */
+		width: 10px; /*  */
 	}
 
+	// Зона отслеживания
 	&::-webkit-scrollbar-track {
-		background: transparent; /* цвет зоны отслеживания */
+		background: transparent;
 		margin: 20px;
 	}
 
+	// Бегунок
 	&::-webkit-scrollbar-thumb {
-		background-color: var(--color-white-smoke); /* цвет бегунка */
-		border-radius: 20px; /* округлось бегунка */
+		background-color: var(--color-white-smoke);
+		border-radius: 20px;
 	}
 
 	&--hidden {
 		display: none;
 	}
 
-	&__content {
-		// height: 100%;
-		// (родительские отступы карточки) -отступы -~заголовки
-		// max-height: calc((100vh - (144px + 40px) - 24px * 2 - 22px) - 88px - 2.32em - 2.2em);
-		// overflow-y: scroll;
-
-		// &::-webkit-scrollbar {
-		// 	width: 10px; /* ширина всей полосы прокрутки */
-		// }
-
-		// &::-webkit-scrollbar-track {
-		// 	background: var(--color-white); /* цвет зоны отслеживания */
-		// }
-
-		// &::-webkit-scrollbar-thumb {
-		// 	background-color: var(--color-white-smoke); /* цвет бегунка */
-		// 	border-radius: 20px; /* округлось бегунка */
-		// }
-	}
+	&__content {}
 }
 
 ul {

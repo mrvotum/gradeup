@@ -6,12 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./results-page.component.scss']
 })
 export class ResultsPageComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit(): void {
     document.querySelector('body')?.classList.add('body--results');
   }
-
-
 }

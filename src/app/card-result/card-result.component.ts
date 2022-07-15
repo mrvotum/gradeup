@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { CardService } from '../card.service';
 
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
@@ -10,7 +11,7 @@ import jsPDF from 'jspdf';
 })
 export class CardResultComponent implements OnInit {
 
-  constructor() { }
+  constructor(public service: CardService) { }
 
   ngOnInit(): void {
   }

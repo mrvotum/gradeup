@@ -1,44 +1,55 @@
 import { Component, OnInit } from '@angular/core';
+import { CardService } from '../card.service';
 
 @Component({
   selector: 'app-card-panel',
   templateUrl: './card-panel.component.html',
-  styleUrls: ['./card-panel.component.scss']
+  styleUrls: ['./card-panel.component.scss'],
+  // providers: [ CardService ]
 })
 export class CardPanelComponent implements OnInit {
   cards = document.querySelectorAll('.card');
+  cardsParent = document.getElementsByClassName('card__content--answers');
 
   questions = document.getElementsByClassName('card');
-  questionsCount: Number = 0;
-  currentQuestion: Number = 1;
   questionsCountPercent: Number = 0;
   currentQuestionPercent: Number = 1;
-
-  progressInfo = {
-    answeredQuestionWidth: 'width: 100%',
-    currentQuestionWidth: 'width: 0%',
-    currentQuestionLeft: 'left: 0%'
-  };
+  answeredQuestions: Number = 1;
 
   isQuizStarted = false;
   isFirstSearch = true;
-  disabled = true;
 
-  constructor() { }
+  constructor(public service: CardService) { }
 
   ngOnInit(): void {
     document.addEventListener('DOMContentLoaded', () => {
       if (document.querySelector('body.test-started')) {
-        this.isQuizStarted = !this.isQuizStarted;
+        this.startQuiz()
 
-        if (!document.querySelector('body--results')) {
-          this.questionsCount = this.questions.length;
-
-          // this.initProgressBar();
-          this.convertCountToPercent();
-        }
+        // Пока только для отладки
+        document.addEventListener( 'keyup', event => {
+          if( event.keyCode === 13 ) this.changeQuestion(true);
+        });
       }
     });
+  }
+
+  unlockNextQuestion() { }
+
+  randomInfo() {
+    document.querySelector('body')?.classList.add('body--results');
+
+    this.service.statistic = [
+      {
+        categorMaxScore: 12,
+        category: 10,
+        categoryResWidth: `width: ${10 * 100 / 12}%`
+      }, {
+        categorMaxScore: 12,
+        category: 6,
+        categoryResWidth: `width: ${6 * 12 / 3}%`
+      }
+    ];
   }
 
   startQuiz() {
@@ -47,29 +58,66 @@ export class CardPanelComponent implements OnInit {
     if (!document.querySelector('body--results')) {
       setTimeout(() => {
         this.questions = document.getElementsByClassName('card');
-        this.questionsCount = this.questions.length;
+        this.service.progressInfo.questionsCount = this.questions.length;
+        const questionsAnswered: any = {};
 
-        // this.initProgressBar();
-          this.convertCountToPercent();
+        for (let i = 0; i < this.questions.length; i++) {
+          questionsAnswered[`questionN${i + 1}`] = false;
+        }
+
+        this.service.questionsAnswered.push(questionsAnswered);
+
+        this.convertCountToPercent();
       }, 100);
     }
   }
 
-  // initProgressBar() {
-  //   console.log('keke');
-  // }
-
   showResults() {
-    console.log('to results');
+    const questionsBlocks = document.querySelectorAll('.questions-block');
+
+    const radioBtns = document.querySelectorAll('input[type="radio"]:checked');
+		let maxScore = 0;
+
+		if (radioBtns) {
+			for (let i = 0; i < questionsBlocks.length; i++) {
+				const element = document.querySelectorAll(`input[type="radio"][data-questions-block="${i + 1}"]:checked`);
+				let categoryScore = 0;
+
+				element.forEach(el => {
+					categoryScore = categoryScore + Number(el.getAttribute('value'));
+				});
+
+        // Объект, куда записывается статистика по ответам блока вопросов
+        const categoryInfo: any = {};
+        categoryInfo['categorMaxScore'] = element.length * 4;
+        categoryInfo['categoryTotalScore'] = categoryScore;
+        // Переводим результат в проценты
+        categoryInfo['categoryResWidth'] = `width: ${(categoryScore * 100) / (element.length * 4)}%`;
+
+        this.service.statistic.push(categoryInfo);
+			}
+
+			radioBtns.forEach(element => {
+				maxScore = maxScore + Number(element.getAttribute('value'));
+			});
+
+			this.service.statistic.maxScore = radioBtns.length * 4;
+		} else {
+			console.error('Не получилось найти отмеченные вопросы');
+			return;
+		}
+
     document.querySelector('body')?.classList.add('body--results');
   }
 
   convertCountToPercent() {
-    this.questionsCountPercent = this.questionsCount;
-    this.currentQuestionPercent = Number(this.currentQuestion) * 100 / Number(this.questionsCount);
+    this.questionsCountPercent = this.service.progressInfo.questionsCount;
+    this.currentQuestionPercent = Number(this.service.progressInfo.currentQuestion) * 100 / Number(this.service.progressInfo.questionsCount);
+    this.answeredQuestions = Number(this.service.progressInfo.unlockedQuestionsCount) * 100 / Number(this.service.progressInfo.questionsCount);
 
-    this.progressInfo.currentQuestionWidth = `width: ${this.currentQuestionPercent}%`;
-    this.progressInfo.currentQuestionLeft = `left: ${this.currentQuestionPercent}%`;
+    this.service.progressInfo.answeredQuestionWidth = `width: ${this.answeredQuestions}%`;
+    this.service.progressInfo.currentQuestionWidth = `width: ${this.currentQuestionPercent}%`;
+    this.service.progressInfo.currentQuestionLeft = `left: ${this.currentQuestionPercent}%`;
   }
 
   changeQuestion(isNext: boolean) {
@@ -83,13 +131,24 @@ export class CardPanelComponent implements OnInit {
 
       if (element.getAttribute('data-current') == 'true') {
         if (isNext) {
-          this.disabled = false;
-          this.currentQuestion = Number(element.getAttribute('data-question-holder')) + 1;
+          this.service.disabled.prev = false;
+
+          this.service.progressInfo.currentQuestion = Number(element.getAttribute('data-question-holder')) + 1;
+
+          // При шаге вперёд проверяем, отвечен ли текущий вопрос, чтобы блокировать или не блокировать кнопку
+          if (this.service.questionsAnswered[0][`questionN${i+2}`] == false) {
+            this.service.disabled.next = true;
+          }
         } else {
-          this.currentQuestion = Number(element.getAttribute('data-question-holder')) - 1;
+          this.service.progressInfo.currentQuestion = Number(element.getAttribute('data-question-holder')) - 1;
+
+          // При шаге назад проверяем, отвечен ли текущий вопрос, чтобы блокировать или не блокировать кнопку
+          if (this.service.questionsAnswered[0][`questionN${i+2}`] == false) {
+            this.service.disabled.next = false;
+          }
         }
 
-        const nextQuestion = document.querySelector(`[data-question-holder='${this.currentQuestion}']`);
+        const nextQuestion = document.querySelector(`[data-question-holder='${this.service.progressInfo.currentQuestion}']`);
 
         if (nextQuestion) {
           element.setAttribute('data-current', 'false');
@@ -99,7 +158,7 @@ export class CardPanelComponent implements OnInit {
           nextQuestion?.setAttribute('data-current', 'true');
 
           if (!isNext && nextQuestion.getAttribute('data-first') == 'true') {
-            this.disabled = true;
+            this.service.disabled.prev = true;
           }
 
           if (nextQuestion?.getAttribute('data-last') == 'true') {
@@ -113,10 +172,10 @@ export class CardPanelComponent implements OnInit {
           }
 
         } else {
-          console.error(`Вопрос под номером '${this.currentQuestion}' не найден`);
+          console.error(`Вопрос под номером '${this.service.progressInfo.currentQuestion}' не найден`);
 
           // И возвращаем счётчик обратно
-          this.currentQuestion = Number(element.getAttribute('data-question-holder'));
+          this.service.progressInfo.currentQuestion = Number(element.getAttribute('data-question-holder'));
         }
 
         this.convertCountToPercent();
