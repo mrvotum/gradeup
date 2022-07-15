@@ -18,6 +18,19 @@ export class CardPanelComponent implements OnInit {
   isQuizStarted = false;
   isFirstSearch = true;
 
+  statistic: any = [];
+
+  // Для теста пока так
+  // statistic: any = [
+  //   {
+  //     categorMaxScore1: 12,
+  //     category1: 10,
+  //   }, {
+  //     categorMaxScore2: 12,
+  //     category2: 6,
+  //   }
+  // ];
+
   constructor(public service: CardService) { }
 
   ngOnInit(): void {
@@ -32,12 +45,35 @@ export class CardPanelComponent implements OnInit {
             this.convertCountToPercent();
           }, 100);
         }
+
+        // Пока только для отладки
+        document.addEventListener( 'keyup', event => {
+          if( event.keyCode === 13 ) this.changeQuestion(true);
+        });
       }
     });
   }
 
   unlockNextQuestion() {
 
+  }
+
+  randomInfo() {
+    document.querySelector('body')?.classList.add('body--results');
+
+    this.statistic = [
+      {
+        categorMaxScore: 12,
+        category: 10,
+        categoryResWidth: `width: ${10 * 100 / 12}%`
+      }, {
+        categorMaxScore: 12,
+        category: 6,
+        categoryResWidth: `width: ${6 * 12 / 3}%`
+      }
+    ];
+
+    console.log(this.statistic);
   }
 
   startQuiz() {
@@ -55,6 +91,43 @@ export class CardPanelComponent implements OnInit {
 
   showResults() {
     console.log('calculating');
+
+    const questionsBlocks = document.querySelectorAll('.questions-block');
+
+    const radioBtns = document.querySelectorAll('input[type="radio"]:checked');
+		let maxScore = 0;
+
+		if (radioBtns) {
+			for (let i = 0; i < questionsBlocks.length; i++) {
+				const element = document.querySelectorAll(`input[type="radio"][data-questions-block="${i + 1}"]:checked`);
+				let categoryScore = 0;
+
+				element.forEach(el => {
+					categoryScore = categoryScore + Number(el.getAttribute('value'));
+				});
+
+        // Объект, куда записывается статистика по ответам блока вопросов
+        const categoryInfo: any = {};
+        categoryInfo['categorMaxScore'] = element.length * 4;
+        categoryInfo['categoryTotalScore'] = categoryScore;
+        // Переводим результат в проценты
+        categoryInfo['categoryResWidth'] = `width: ${(categoryScore * 100) / (element.length * 4)}%`;
+
+        this.statistic.push(categoryInfo);
+			}
+
+			radioBtns.forEach(element => {
+				maxScore = maxScore + Number(element.getAttribute('value'));
+			});
+
+			this.statistic.maxScore = radioBtns.length * 4;
+		} else {
+			console.error('Не получилось найти отмеченные вопросы');
+			return;
+		}
+
+    console.log(this.statistic);
+
     document.querySelector('body')?.classList.add('body--results');
   }
 
