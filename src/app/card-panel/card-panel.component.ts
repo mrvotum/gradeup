@@ -18,20 +18,34 @@ export class CardPanelComponent implements OnInit {
 
   isQuizStarted = false;
   isFirstSearch = true;
+  fisrtInit = true;
 
   constructor(public service: CardService) { }
 
   ngOnInit(): void {
-    document.addEventListener('DOMContentLoaded', () => {
-      if (document.querySelector('body.test-started')) {
-        this.startQuiz()
+    // document.addEventListener('DOMContentLoaded', () => {
+    //   if (document.querySelector('body.test-started')) {
+    //     this.startQuiz();
 
         // Пока только для отладки
         document.addEventListener( 'keyup', event => {
           if( event.keyCode === 13 ) this.changeQuestion(true);
         });
+    //   }
+    // });
+  }
+
+  ngDoCheck() {
+    if (this.fisrtInit) {
+      const questions = document.getElementsByClassName('card');
+
+      if (questions.length > 0 && document.querySelector('body.test-started')) {
+        this.fisrtInit = false;
+        // this.service.progressInfo.questionsCount = questions.length;
+
+        this.startQuiz();
       }
-    });
+    }
   }
 
   unlockNextQuestion() { }
@@ -42,65 +56,62 @@ export class CardPanelComponent implements OnInit {
     this.service.statistic = [
       {
         categoryMaxScore: 12,
-        category: 12,
+        categoryTotalScore: 12,
         categoryResWidth: `width: ${12 * 100 / 12}%`
       }, {
         categoryMaxScore: 16,
-        category: 9,
+        categoryTotalScore: 9,
         categoryResWidth: `width: ${9 * 100 / 16}%`
       }, {
         categoryMaxScore: 12,
-        category: 9,
+        categoryTotalScore: 9,
         categoryResWidth: `width: ${9 * 100 / 12}%`
       }, {
         categoryMaxScore: 16,
-        category: 14,
+        categoryTotalScore: 14,
         categoryResWidth: `width: ${14 * 100 / 16}%`
       }, {
         categoryMaxScore: 28,
-        category: 13,
+        categoryTotalScore: 13,
         categoryResWidth: `width: ${13 * 100 / 28}%`
       }, {
         categoryMaxScore: 16,
-        category: 5,
+        categoryTotalScore: 5,
         categoryResWidth: `width: ${5 * 100 / 16}%`
       }, {
         categoryMaxScore: 8,
-        category: 4,
+        categoryTotalScore: 4,
         categoryResWidth: `width: ${4 *100  / 8}%`
       }, {
         categoryMaxScore: 8,
-        category: 5,
+        categoryTotalScore: 5,
         categoryResWidth: `width: ${5 *100  / 8}%`
       }, {
         categoryMaxScore: 12,
-        category: 5,
+        categoryTotalScore: 5,
         categoryResWidth: `width: ${5 * 100 / 12}%`
       }, {
         categoryMaxScore: 12,
-        category: 10,
+        categoryTotalScore: 10,
         categoryResWidth: `width: ${10 * 100 / 12}%`
       }
     ];
   }
 
   startQuiz() {
-    this.isQuizStarted = !this.isQuizStarted;
-
     if (!document.querySelector('body--results')) {
-      setTimeout(() => {
-        this.questions = document.getElementsByClassName('card');
-        this.service.progressInfo.questionsCount = this.questions.length;
-        const questionsAnswered: any = {};
+      this.isQuizStarted = true;
 
-        for (let i = 0; i < this.questions.length; i++) {
-          questionsAnswered[`questionN${i + 1}`] = false;
-        }
+      this.service.progressInfo.questionsCount = this.questions.length;
+      const questionsAnswered: any = {};
 
-        this.service.questionsAnswered.push(questionsAnswered);
+      for (let i = 0; i < this.questions.length; i++) {
+        questionsAnswered[`questionN${i + 1}`] = false;
+      }
 
-        this.convertCountToPercent();
-      }, 200);
+      this.service.questionsAnswered.push(questionsAnswered);
+
+      this.convertCountToPercent();
     }
   }
 

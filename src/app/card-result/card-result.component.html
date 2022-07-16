@@ -3,7 +3,7 @@
 	<div class="competence-map" id="content" #content>
 		<div class="competence-map__bar" *ngFor="let bar of service.statistic">
 			<div class="competence-map__bar-result" [attr.style]="bar.categoryResWidth"></div>
-			<span style="position: absolute;left: 20px;top: 50%;transform: translateY(-50%);">{{ bar.category }} из {{ bar.categoryMaxScore }}</span>
+			<span style="position: absolute;left: 20px;top: 50%;transform: translateY(-50%);">{{ bar.categoryTotalScore }} из {{ bar.categoryMaxScore }}</span>
 		</div>
 	</div>
 
