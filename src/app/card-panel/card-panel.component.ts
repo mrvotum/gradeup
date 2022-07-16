@@ -41,13 +41,45 @@ export class CardPanelComponent implements OnInit {
 
     this.service.statistic = [
       {
-        categorMaxScore: 12,
+        categoryMaxScore: 12,
+        category: 12,
+        categoryResWidth: `width: ${12 * 100 / 12}%`
+      }, {
+        categoryMaxScore: 16,
+        category: 9,
+        categoryResWidth: `width: ${9 * 100 / 16}%`
+      }, {
+        categoryMaxScore: 12,
+        category: 9,
+        categoryResWidth: `width: ${9 * 100 / 12}%`
+      }, {
+        categoryMaxScore: 16,
+        category: 14,
+        categoryResWidth: `width: ${14 * 100 / 16}%`
+      }, {
+        categoryMaxScore: 28,
+        category: 13,
+        categoryResWidth: `width: ${13 * 100 / 28}%`
+      }, {
+        categoryMaxScore: 16,
+        category: 5,
+        categoryResWidth: `width: ${5 * 100 / 16}%`
+      }, {
+        categoryMaxScore: 8,
+        category: 4,
+        categoryResWidth: `width: ${4 *100  / 8}%`
+      }, {
+        categoryMaxScore: 8,
+        category: 5,
+        categoryResWidth: `width: ${5 *100  / 8}%`
+      }, {
+        categoryMaxScore: 12,
+        category: 5,
+        categoryResWidth: `width: ${5 * 100 / 12}%`
+      }, {
+        categoryMaxScore: 12,
         category: 10,
         categoryResWidth: `width: ${10 * 100 / 12}%`
-      }, {
-        categorMaxScore: 12,
-        category: 6,
-        categoryResWidth: `width: ${6 * 12 / 3}%`
       }
     ];
   }
@@ -68,7 +100,7 @@ export class CardPanelComponent implements OnInit {
         this.service.questionsAnswered.push(questionsAnswered);
 
         this.convertCountToPercent();
-      }, 100);
+      }, 200);
     }
   }
 
@@ -89,7 +121,7 @@ export class CardPanelComponent implements OnInit {
 
         // Объект, куда записывается статистика по ответам блока вопросов
         const categoryInfo: any = {};
-        categoryInfo['categorMaxScore'] = element.length * 4;
+        categoryInfo['categoryMaxScore'] = element.length * 4;
         categoryInfo['categoryTotalScore'] = categoryScore;
         // Переводим результат в проценты
         categoryInfo['categoryResWidth'] = `width: ${(categoryScore * 100) / (element.length * 4)}%`;

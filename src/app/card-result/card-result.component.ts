@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { CardService } from '../card.service';
 
 import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+// import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-card-result',
@@ -19,23 +19,35 @@ export class CardResultComponent implements OnInit {
   @ViewChild('content', { static: true }) el!: ElementRef<HTMLImageElement>;
 
   exportPDF() {
-    html2canvas(this.el.nativeElement).then((canvas) => {
-      const imgData = canvas.toDataURL('image/jpeg')
+    // html2canvas(this.el.nativeElement).then((canvas) => {
+    //   const imgData = canvas.toDataURL('image/jpeg')
 
-      const pdf = new jsPDF({
-        orientation:'portrait'
-      })
+    //   const pdf = new jsPDF({
+    //     orientation:'portrait'
+    //   })
 
-      const imageProps = pdf.getImageProperties(imgData)
+    //   const imageProps = pdf.getImageProperties(imgData)
 
-      const pdfw = pdf.internal.pageSize.getWidth()
+    //   const pdfw = pdf.internal.pageSize.getWidth()
 
-      const pdfh = (imageProps.height * pdfw) / imageProps.width
+    //   const pdfh = (imageProps.height * pdfw) / imageProps.width
 
-      pdf.addImage(imgData, 'PNG', 0, 0, pdfw, pdfh)
+    //   pdf.addImage(imgData, 'PNG', 0, 0, pdfw, pdfh)
 
-      pdf.save('your level.pdf')
-    })
+    //   pdf.save('your level.pdf')
+    // })
+
+    html2canvas(this.el.nativeElement).then(canvas => {
+      document.body.appendChild(canvas)
+      const linkHolder = document.getElementById('link-holder');
+
+      var link = document.createElement('a');
+      linkHolder?.appendChild(link);
+      link.download = 'your level.jpg';
+      link.href = canvas.toDataURL();
+      link.target = '_blank';
+      link.click();
+    });
   }
 
 }
