@@ -20,7 +20,6 @@ export class CardResultComponent implements OnInit {
 
   ngOnInit(): void {
     this.serviceReader.getJSON().subscribe(data => {
-      console.log(data)
       this.testDB = data;
       this.service.testDB = data;
     });
