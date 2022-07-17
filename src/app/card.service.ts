@@ -32,19 +32,19 @@ export class CardService {
 
   levelGrade = {
     levelName: 'Beginner',
-    imgUrl: '/assets/images/dude-middle.png',
-    alt: 'Senior dude'
+    imgUrl: '/assets/images/dude-junior.png',
+    alt: 'Beginner dude'
   };
 
   levelData = {
     beginner: {
       levelName: 'Beginner',
-      imgUrl: '/assets/images/dude-middle.png',
+      imgUrl: '/assets/images/dude-junior.png',
       alt: 'Senior dude'
     },
     junior: {
       levelName: 'Junior',
-      imgUrl: '/assets/images/dude-middle.png',
+      imgUrl: '/assets/images/dude-junior.png',
       alt: 'Junior dude'
     },
     middle: {
@@ -59,7 +59,7 @@ export class CardService {
     },
     lead: {
       levelName: 'Lead',
-      imgUrl: '/assets/images/dude-senior.png',
+      imgUrl: '/assets/images/dude-lead.png',
       alt: 'Lead dude'
     }
   }
