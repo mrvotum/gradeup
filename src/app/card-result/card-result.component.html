@@ -7,7 +7,7 @@
 		</h1>
 		<div class="score">Score: {{service.progressInfo.totalScrore}}</div>
 		<div style="opacity: 0.5; color: #fff">Max score: {{service.progressInfo.maxScore}} (*для отладки)</div>
-
+		<img class="result__img" src="/assets/images/dude-senior.png" alt="Senior dude">
 	</div>
 
 	<div class="card__footer">
@@ -21,9 +21,16 @@
 	</div>
 </div>
 
-<div class="card" id="content" #content>
+<div class="card card--with-aside" id="content" #content>
 	<div class="card__title">
 		<div class="title">Карта компетенций</div>
+	</div>
+
+	<div class="custom__aside">
+		<div class="prompt prompt--fixed">
+			<span>Скачайте <br>результаты, <br>они не сохранятся</span>
+			<button class="btn btn--colored" (click)="exportImgResult()">Скачать</button>
+		</div>
 	</div>
 
 	<div class="legend">
@@ -46,8 +53,6 @@
 			<p *ngFor="let question of block.questions; let j = index">{{ question.title }}</p>
 		</div>
 	</div>
-
-
 
 	<div id="link-holder" style="display: none;"></div>
 </div>

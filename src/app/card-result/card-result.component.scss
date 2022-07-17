@@ -53,6 +53,12 @@
 		background-color: var(--color-victoria);
 		border-radius: 25px;
 	}
+
+	&__img {
+		position: absolute;
+		right: 45px;
+		bottom: 0;
+	}
 }
 
 .legend {
@@ -140,6 +146,74 @@
 
 	.prompt {
 		max-width: 376px;
+	}
+}
+
+// Разобраться!
+.card--with-aside {
+	position: relative;
+
+	.custom__aside {
+		position: absolute;
+		top: 0;
+		left: calc(100% + 8px);
+		height: 100%;
+	}
+
+	.prompt {
+		background-color: var(--color-white);
+		border-radius: 24px;
+
+		&--fixed {
+			// position: absolute;
+			position: -webkit-sticky;
+  			position: sticky;
+			width: 200px;
+			padding: 16px;
+			top: 0;
+			left: calc(100% + 8px);
+
+			.btn {
+				width: 100%;
+			}
+		}
+
+		span {
+			display: block;
+			margin-bottom: 20px;
+
+			strong {
+				display: block;
+				margin-bottom: 6px;
+			}
+		}
+
+		.btn__wrapper {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.btn {
+			display: inline-block;
+			text-decoration: none;
+			text-align: center;
+			padding: 16px 30px;
+			font-weight: 600;
+			min-width: auto;
+
+			&--colored {
+				background-color: var(--color-primary);
+				color: var(--color-white);
+
+				&:hover {
+					background-color: var(--color-primary--hover);
+				}
+
+				&:active {
+					background-color: var(--color-primary--active);
+				}
+			}
+		}
 	}
 }
 
