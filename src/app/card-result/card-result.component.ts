@@ -38,7 +38,6 @@ export class CardResultComponent implements OnInit {
     // })
 
     html2canvas(this.el.nativeElement).then(canvas => {
-      document.body.appendChild(canvas)
       const linkHolder = document.getElementById('link-holder');
 
       var link = document.createElement('a');

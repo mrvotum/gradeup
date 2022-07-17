@@ -25,6 +25,7 @@
 	--color-secondary: var(--color-white-smoke);
 	--color-secondary--hover: var(--color-whisper);
 	--color-secondary--active: var(--color-gainsboro);
+	--color-secondary--disable: var(--color-gainsboro);
 
 	--color-body: var(--color-white-smoke);
 
@@ -111,6 +112,10 @@
 
 	&:active {
 		background-color: var(--color-secondary--active);
+	}
+
+	&:disabled {
+		color: var(--color-secondary--disable);
 	}
 }
 
