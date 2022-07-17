@@ -25,8 +25,44 @@ export class CardService {
     // Сколько можно набрать в тесте баллов всего
     maxScore: 0,
     // Сколько баллов набрано
-    totalScrore: 0
+    totalScore: 0,
+    // Какой выявлен уровень
+    grade: 'beginner'
   };
+
+  levelGrade = {
+    levelName: 'Beginner',
+    imgUrl: '/assets/images/dude-middle.png',
+    alt: 'Senior dude'
+  };
+
+  levelData = {
+    beginner: {
+      levelName: 'Beginner',
+      imgUrl: '/assets/images/dude-middle.png',
+      alt: 'Senior dude'
+    },
+    junior: {
+      levelName: 'Junior',
+      imgUrl: '/assets/images/dude-middle.png',
+      alt: 'Junior dude'
+    },
+    middle: {
+      levelName: 'Middle',
+      imgUrl: '/assets/images/dude-middle.png',
+      alt: 'Middle dude'
+    },
+    senior: {
+      levelName: 'Senior',
+      imgUrl: '/assets/images/dude-senior.png',
+      alt: 'Senior dude'
+    },
+    lead: {
+      levelName: 'Lead',
+      imgUrl: '/assets/images/dude-senior.png',
+      alt: 'Lead dude'
+    }
+  }
 
   // Блокировка кнопок перехода
   disabled = {
