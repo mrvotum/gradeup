@@ -53,6 +53,9 @@ export class CardPanelComponent implements OnInit {
   randomInfo() {
     document.querySelector('body')?.classList.add('body--results');
 
+    this.service.progressInfo.maxScore = 140;
+    this.service.progressInfo.totalScrore = 86;
+
     this.service.statistic = [
       {
         categoryMaxScore: 12,
@@ -145,6 +148,7 @@ export class CardPanelComponent implements OnInit {
 			});
 
 			this.service.statistic.maxScore = radioBtns.length * 4;
+			this.service.statistic.totalScrore = radioBtns.length * 4;
 		} else {
 			console.error('Не получилось найти отмеченные вопросы');
 			return;

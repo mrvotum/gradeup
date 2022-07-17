@@ -21,7 +21,11 @@ export class CardService {
     // На сколько вопросов ответили
     unlockedQuestionsCount: 1,
     // Сколько вопросов в тесте всего
-    questionsCount: 1
+    questionsCount: 1,
+    // Сколько можно набрать в тесте баллов всего
+    maxScore: 0,
+    // Сколько баллов набрано
+    totalScrore: 0
   };
 
   // Блокировка кнопок перехода
@@ -30,7 +34,7 @@ export class CardService {
     next: true
   };
 
-
+  testDB: any = [];
 
   constructor() { }
 

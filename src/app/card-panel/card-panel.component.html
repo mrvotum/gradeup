@@ -15,7 +15,7 @@
 	</div>
 	<button id="btn--next" class="btn btn--next" (click)="changeQuestion(true)" [disabled]="service.disabled.next">Дальше</button>
 	<button class="btn btn--results btn--hidden" routerLink="/results" (click)="showResults()" [disabled]="service.disabled.next">Узнать результаты</button>
-	<!-- <a style="position: absolute; top: 0;" routerLink="/results" (click)="randomInfo()">Random info</a> -->
+	<a style="position: absolute; top: 0;" routerLink="/results" (click)="randomInfo()">Random info</a>
 </div>
 
 <!-- Нужен для события, когда сверху прилетает false -->

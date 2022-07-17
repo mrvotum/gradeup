@@ -1,16 +1,53 @@
-<div class="card">
-	<h1 class="result">Ты <span class="result__level">Lead-designer</span></h1>
-	<div class="competence-map" id="content" #content>
-		<div class="competence-map__bar" *ngFor="let bar of service.statistic">
+<div class="card card--np">
+	<div class="result">
+		<h1 class="result__info">
+			<span class="subtitle">Кажется</span>
+			<span class="title">You are</span>
+			<span class="result__level">Senior-designer</span>
+		</h1>
+		<div class="score">Score: {{service.progressInfo.totalScrore}}</div>
+		<div style="opacity: 0.5; color: #fff">Max score: {{service.progressInfo.maxScore}} (*для отладки)</div>
+
+	</div>
+
+	<div class="card__footer">
+		<div class="prompt">
+			Скачайте нужный формат результатов, чтобы поделиться&nbsp;им
+		</div>
+		<div class="btn__wrapper">
+			<button class="btn">Сторис<br>в инсту</button>
+			<button class="btn" (click)="exportImgResult()">Пост<br>квадратный</button>
+		</div>
+	</div>
+</div>
+
+<div class="card" id="content" #content>
+	<div class="card__title">
+		<div class="title">Карта компетенций</div>
+	</div>
+
+	<div class="legend">
+		<span class="legend__el">Новичок</span>
+		<span class="legend__el">Джун</span>
+		<span class="legend__el">Мидл</span>
+		<span class="legend__el">Синьёр</span>
+		<span class="legend__el">Лид</span>
+	</div>
+	<div class="competence-map">
+		<div class="competence-map__bar" *ngFor="let bar of service.statistic; let i = index">
 			<div class="competence-map__bar-result" [attr.style]="bar.categoryResWidth"></div>
-			<span style="position: absolute;left: 20px;top: 50%;transform: translateY(-50%);">{{ bar.categoryTotalScore }} из {{ bar.categoryMaxScore }}</span>
+			<span class="competence-map__bar-legend">{{ service.testDB[i].theme }}<sup>{{ i + 1 }}</sup></span>
+			<!-- <span style="position: absolute;left: 20px;top: 50%;transform: translateY(-50%);">{{ bar.categoryTotalScore }} из {{ bar.categoryMaxScore }}</span> -->
+		</div>
+	</div>
+	<div class="competence-map__legend">
+		<div class="competence-map__legend-el" *ngFor="let block of testDB; let j = index">
+			<p>{{ j + 1 }}</p>
+			<p *ngFor="let question of block.questions; let j = index">{{ question.title }}</p>
 		</div>
 	</div>
 
-	<div id="link-holder" style="display: none;"></div>
 
-	<div class="btn__wrapper">
-		<button class="btn">Скачать картинку для сторис</button>
-		<button class="btn" (click)="exportPDF()">Скачать картинку для поста</button>
-	</div>
+
+	<div id="link-holder" style="display: none;"></div>
 </div>

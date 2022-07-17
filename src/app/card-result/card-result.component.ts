@@ -1,42 +1,34 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { CardService } from '../card.service';
+import { TestReaderService } from '../test-reader.service';
 
 import html2canvas from 'html2canvas';
-// import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-card-result',
   templateUrl: './card-result.component.html',
-  styleUrls: ['./card-result.component.scss']
+  styleUrls: ['./card-result.component.scss'],
+  providers: [ TestReaderService ]
 })
 export class CardResultComponent implements OnInit {
+  testDB: any = null;
 
-  constructor(public service: CardService) { }
+  constructor(
+    public service: CardService,
+    private serviceReader: TestReaderService
+    ) { }
 
   ngOnInit(): void {
+    this.serviceReader.getJSON().subscribe(data => {
+      console.log(data)
+      this.testDB = data;
+      this.service.testDB = data;
+    });
   }
 
   @ViewChild('content', { static: true }) el!: ElementRef<HTMLImageElement>;
 
-  exportPDF() {
-    // html2canvas(this.el.nativeElement).then((canvas) => {
-    //   const imgData = canvas.toDataURL('image/jpeg')
-
-    //   const pdf = new jsPDF({
-    //     orientation:'portrait'
-    //   })
-
-    //   const imageProps = pdf.getImageProperties(imgData)
-
-    //   const pdfw = pdf.internal.pageSize.getWidth()
-
-    //   const pdfh = (imageProps.height * pdfw) / imageProps.width
-
-    //   pdf.addImage(imgData, 'PNG', 0, 0, pdfw, pdfh)
-
-    //   pdf.save('your level.pdf')
-    // })
-
+  exportImgResult() {
     html2canvas(this.el.nativeElement).then(canvas => {
       const linkHolder = document.getElementById('link-holder');
 
@@ -48,5 +40,4 @@ export class CardResultComponent implements OnInit {
       link.click();
     });
   }
-
 }
