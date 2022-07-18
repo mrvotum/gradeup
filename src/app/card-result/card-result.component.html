@@ -6,7 +6,6 @@
 			<span class="result__level">{{ service.levelGrade.levelName }}</span>
 		</h1>
 		<div class="score">Score: {{service.progressInfo.totalScore}}</div>
-		<div style="opacity: 0.5; color: #fff">Max score: {{service.progressInfo.maxScore}} (*для отладки)</div>
 		<img class="result__img"
 			[attr.src]="service.levelGrade.imgUrl"
 			[attr.alt]="service.levelGrade.alt">
@@ -30,7 +29,8 @@
 
 	<div class="custom__aside">
 		<div class="prompt prompt--fixed">
-			<span>Скачайте <br>результаты, <br>они не сохранятся</span>
+      <strong>Скачайте результаты</strong>
+			<span>Они не&nbsp;сохранятся на&nbsp;сайте</span>
 			<button class="btn btn--colored" (click)="exportImgResult()">Скачать</button>
 		</div>
 	</div>
@@ -45,7 +45,7 @@
 	<div class="competence-map">
 		<div class="competence-map__bar" *ngFor="let bar of service.statistic; let i = index">
 			<div class="competence-map__bar-result" [attr.style]="bar.categoryResWidth"></div>
-			<span class="competence-map__bar-legend" *ngIf="service.testDB[i];">{{ service.testDB[i].theme }}<sup>{{ i + 1 }}</sup></span>
+			<span class="competence-map__bar-legend" *ngIf="service.testDB[i];" [innerHTML]="service.testDB[i].theme"><sup>{{ i + 1 }}</sup></span>
 			<!-- <span class="competence-map__bar-legend">{{ service.testDB[i].theme }}<sup>{{ i + 1 }}</sup></span> -->
 			<!-- <span style="position: absolute;left: 20px;top: 50%;transform: translateY(-50%);">{{ bar.categoryTotalScore }} из {{ bar.categoryMaxScore }}</span> -->
 		</div>
@@ -58,4 +58,11 @@
 	</div>
 
 	<div id="link-holder" style="display: none;"></div>
+  <div class="line-grid">
+    <div class="grid-line"></div>
+    <div class="grid-line"></div>
+    <div class="grid-line"></div>
+    <div class="grid-line"></div>
+    <div class="grid-line"></div>
+  </div>
 </div>

@@ -38,26 +38,16 @@
 	padding: 24px;
 	margin: 10px auto 20px;
 
-	&--fixed {
-		position: absolute;
-		max-width: 200px;
-		top: 0;
-		left: calc(100% + 8px);
-		box-shadow: none;
-
-		.btn {
-			width: 100%;
-		}
-	}
+  strong {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
 
 	span {
 		display: block;
-		margin-bottom: 20px;
-
-		strong {
-			display: block;
-			margin-bottom: 6px;
-		}
+		margin-bottom: 12px;
+    color: var(--color-grey);
 	}
 
 	.btn__wrapper {
