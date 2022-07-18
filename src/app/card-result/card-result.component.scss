@@ -175,6 +175,10 @@
 	.prompt {
 		max-width: 376px;
 	}
+
+  &--print-v {
+    display: none;
+  }
 }
 
 // Разобраться!

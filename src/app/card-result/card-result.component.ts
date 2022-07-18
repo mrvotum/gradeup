@@ -28,6 +28,8 @@ export class CardResultComponent implements OnInit {
   @ViewChild('content', { static: true }) el!: ElementRef<HTMLImageElement>;
 
   exportImgResult() {
+    this.changeCardView();
+
     html2canvas(this.el.nativeElement).then(canvas => {
       const linkHolder = document.getElementById('link-holder');
 
@@ -38,5 +40,17 @@ export class CardResultComponent implements OnInit {
       link.target = '_blank';
       link.click();
     });
+
+    this.changeCardView();
+  }
+
+  changeCardView() {
+    const cardFooter = document.querySelector('.card__footer');
+
+    if (cardFooter?.classList.contains('card__footer--print-v')) {
+      cardFooter?.classList.remove('card__footer--print-v');
+    } else {
+      cardFooter?.classList.add('card__footer--print-v');
+    }
   }
 }
