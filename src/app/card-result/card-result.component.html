@@ -56,7 +56,10 @@
     <div class="competence-map">
       <div class="competence-map__bar" *ngFor="let bar of service.statistic; let i = index">
         <div class="competence-map__bar-result" [attr.style]="bar.categoryResWidth"></div>
-        <span class="competence-map__bar-legend" *ngIf="service.testDB[i];" [innerHTML]="service.testDB[i].theme"><sup>{{ i + 1 }}</sup></span>
+        <span class="competence-map__bar-legend" *ngIf="service.testDB[i];">
+          <span [innerHTML]="service.testDB[i].theme"></span>
+          <sup>{{ i + 1 }}</sup>
+        </span>
         <!-- <span class="competence-map__bar-legend">{{ service.testDB[i].theme }}<sup>{{ i + 1 }}</sup></span> -->
         <!-- <span style="position: absolute;left: 20px;top: 50%;transform: translateY(-50%);">{{ bar.categoryTotalScore }} из {{ bar.categoryMaxScore }}</span> -->
       </div>

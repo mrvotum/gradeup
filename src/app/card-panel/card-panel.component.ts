@@ -28,9 +28,9 @@ export class CardPanelComponent implements OnInit {
     //     this.startQuiz();
 
         // Пока только для отладки
-        document.addEventListener( 'keyup', event => {
-          if( event.keyCode === 13 ) this.changeQuestion(true);
-        });
+        // document.addEventListener( 'keyup', event => {
+        //   if( event.keyCode === 13 ) this.changeQuestion(true);
+        // });
     //   }
     // });
   }
