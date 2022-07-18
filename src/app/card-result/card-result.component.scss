@@ -179,6 +179,15 @@
   &--print-v {
     display: none;
   }
+
+  .btn {
+    padding: 16px 24px;
+    min-width: 154px;
+
+    &:last-child {
+      margin-left: 24px;
+    }
+  }
 }
 
 // Разобраться!
@@ -251,17 +260,49 @@
 	}
 }
 
-.btn__wrapper {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+@media screen and (max-width: 800px) {
+  .result__info {
+    font-size: 54px;
+  }
 
-	.btn {
-		padding: 16px 24px;
-		min-width: 154px;
-	}
+  .result__img {
+    right: 0;
+    width: 32%;
+  }
 
-	.btn:last-child {
-		margin-left: 24px;
-	}
+  .card__footer {
+    flex-direction: column;
+
+    .prompt {
+      max-width: none;
+      margin-bottom: 12px;
+    }
+  }
+
+  .competence-map__legend-el {
+    width: calc(100% / 3);
+
+    &:nth-last-child(n+3) {
+      margin-top: 12px;
+    }
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .card .line-grid {
+    left: 8px;
+    width: calc(100% - 8px);
+  }
+
+  .custom__aside {
+    display: none;
+  }
+
+  .competence-map__legend-el {
+    width: calc(50%);
+
+    &:nth-last-child(n+2) {
+      margin-top: 12px;
+    }
+  }
 }
