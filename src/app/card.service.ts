@@ -31,16 +31,16 @@ export class CardService {
   };
 
   levelGrade = {
-    levelName: 'Beginner designer',
+    levelName: 'Beginner',
     imgUrl: '/assets/images/dude-beginner.png',
     alt: 'Beginner dude'
   };
 
   levelData = {
     beginner: {
-      levelName: 'Beginner designer',
+      levelName: 'Beginner',
       imgUrl: '/assets/images/dude-beginner.png',
-      alt: 'Senior dude'
+      alt: 'Beginner stone'
     },
     junior: {
       levelName: 'Junior designer',

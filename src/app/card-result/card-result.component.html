@@ -1,11 +1,21 @@
 <div id="content" #content>
   <div class="card card--np">
     <div class="result">
-      <h1 class="result__info">
+      <h1 class="result__info" *ngIf="service.levelGrade.levelName === 'Beginner'; else kek">
         <span class="subtitle">Кажется</span>
-        <span class="title">You are</span>
-        <span class="result__level">{{ service.levelGrade.levelName }}</span>
+        <span class="title">Oh shit,</span>
+        <span class="result__level">that is you</span>
       </h1>
+
+      <!-- Нужен для события, когда сверху прилетает false -->
+      <ng-template #kek>
+        <h1 class="result__info">
+          <span class="subtitle">Кажется</span>
+          <span class="title">You are</span>
+          <span class="result__level">{{ service.levelGrade.levelName }}</span>
+        </h1>
+      </ng-template>
+
       <div class="score">Score: {{service.progressInfo.totalScore}}</div>
       <img class="result__img"
         [attr.src]="service.levelGrade.imgUrl"
