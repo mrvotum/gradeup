@@ -53,6 +53,9 @@ export class CardPanelComponent implements OnInit {
   randomInfo() {
     document.querySelector('body')?.classList.add('body--results');
 
+    this.service.progressInfo.maxScore = 140;
+    this.service.progressInfo.totalScore = 86;
+
     this.service.statistic = [
       {
         categoryMaxScore: 12,
@@ -119,7 +122,7 @@ export class CardPanelComponent implements OnInit {
     const questionsBlocks = document.querySelectorAll('.questions-block');
 
     const radioBtns = document.querySelectorAll('input[type="radio"]:checked');
-		let maxScore = 0;
+		let totalScore = 0;
 
 		if (radioBtns) {
 			for (let i = 0; i < questionsBlocks.length; i++) {
@@ -141,16 +144,37 @@ export class CardPanelComponent implements OnInit {
 			}
 
 			radioBtns.forEach(element => {
-				maxScore = maxScore + Number(element.getAttribute('value'));
+				totalScore = totalScore + Number(element.getAttribute('value'));
 			});
 
-			this.service.statistic.maxScore = radioBtns.length * 4;
+			this.service.progressInfo.maxScore = radioBtns.length * 4;
+
+      this.convertToPoints(totalScore);
 		} else {
 			console.error('Не получилось найти отмеченные вопросы');
 			return;
 		}
 
     document.querySelector('body')?.classList.add('body--results');
+  }
+
+  convertToPoints(totalScore: Number) {
+    const scoreInPoints = Number(totalScore) * 500 / this.service.progressInfo.maxScore;
+    const scoreInPercent = Number(totalScore) * 100 / this.service.progressInfo.maxScore;
+
+    this.service.progressInfo.totalScore = Math.round(scoreInPoints);
+
+    if (scoreInPercent < 20) {
+      this.service.levelGrade = this.service.levelData.beginner;
+    } else if (scoreInPercent > 21 && scoreInPercent < 40) {
+      this.service.levelGrade = this.service.levelData.junior;
+    } else if (scoreInPercent > 41 && scoreInPercent < 60) {
+      this.service.levelGrade = this.service.levelData.middle;
+    } else if (scoreInPercent > 61 && scoreInPercent < 80) {
+      this.service.levelGrade = this.service.levelData.senior;
+    } else if (scoreInPercent > 81) {
+      this.service.levelGrade = this.service.levelData.lead;
+    }
   }
 
   convertCountToPercent() {

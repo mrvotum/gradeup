@@ -21,8 +21,48 @@ export class CardService {
     // На сколько вопросов ответили
     unlockedQuestionsCount: 1,
     // Сколько вопросов в тесте всего
-    questionsCount: 1
+    questionsCount: 1,
+    // Сколько можно набрать в тесте баллов всего
+    maxScore: 0,
+    // Сколько баллов набрано
+    totalScore: 0,
+    // Какой выявлен уровень
+    grade: 'beginner'
   };
+
+  levelGrade = {
+    levelName: 'Beginner',
+    imgUrl: '/assets/images/dude-beginner.png',
+    alt: 'Beginner dude'
+  };
+
+  levelData = {
+    beginner: {
+      levelName: 'Beginner',
+      imgUrl: '/assets/images/dude-beginner.png',
+      alt: 'Beginner stone'
+    },
+    junior: {
+      levelName: 'Junior designer',
+      imgUrl: '/assets/images/dude-junior.png',
+      alt: 'Junior dude'
+    },
+    middle: {
+      levelName: 'Middle designer',
+      imgUrl: '/assets/images/dude-middle.png',
+      alt: 'Middle dude'
+    },
+    senior: {
+      levelName: 'Senior designer',
+      imgUrl: '/assets/images/dude-senior.png',
+      alt: 'Senior dude'
+    },
+    lead: {
+      levelName: 'Lead designer',
+      imgUrl: '/assets/images/dude-lead.png',
+      alt: 'Lead dude'
+    }
+  }
 
   // Блокировка кнопок перехода
   disabled = {
@@ -30,7 +70,7 @@ export class CardService {
     next: true
   };
 
-
+  testDB: any = [];
 
   constructor() { }
 

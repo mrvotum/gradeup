@@ -10,11 +10,14 @@
 	--color-whisper: #E9E9E9;
 	--color-very-light-grey: #CECECE;
 	--color-gainsboro: #D9D9D9;
+  --color-grey: #878787;
 
+	--color-fog: #D8CBFB;
 	--color-medium-purple: #9D7DF4;
 	--color-medium-slate-blue: #835CEE;
 	--color-purple-heart: #633BCF;
-	--color-fog: #D8CBFB;
+	--color-victoria: #5A4D80;
+	--color-butterfly-bush: #685797;
 
 	// Цвета для быстрого обращения
 	--color-primary: var(--color-medium-purple);
@@ -33,6 +36,10 @@
 	--root-font-size: 18px;
 	--root-font-size--mobile: 14px;
 
+  @media screen and (max-width: 1056px) {
+		--root-font-size: 16px;
+	}
+
 	@media screen and (max-width: 520px) {
 		--color-body: var(--color-white);
 		--root-font-size: 14px;
@@ -48,6 +55,7 @@
     flex-direction: column;
 	font-family: 'Inter', sans-serif;
 	font-size: 18px;
+  font-weight: 300;
 	align-items: center;
 	margin: 0;
 }
@@ -60,13 +68,22 @@
 
 .app-card-panel {
 	margin-top: auto;
-	margin-bottom: -17px;
+	// margin-bottom: -17px;
 }
 
 .main-header {
-	display: flex;
-	justify-content: space-between;
-	align-self: normal;
+  position: relative;
+  width: 100%;
+
+  .header {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-self: normal;
+  }
 
 	.logo {}
 
@@ -90,8 +107,15 @@
 }
 
 .main-footer {
+  position: relative;
 	margin-top: auto;
 	align-self: flex-start;
+
+  .footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
 }
 
 .btn {
@@ -130,13 +154,18 @@ div {
 	border-radius: 32px;
 	box-sizing: border-box;
 	font-size: var(--root-font-size);
-	margin-bottom: 1.3em;
+	margin-bottom: 16px;
 	background-color: var(--color-white);
 	padding: 38px 38px 45px 38px;
 
 	&__title {
 		text-align: center;
 		margin-bottom: 2.2em;
+
+    .body--results & {
+      margin-top: 22px;
+      margin-bottom: 58px;
+    }
 
 		.title {
 			font-size: 2em;
@@ -167,6 +196,14 @@ div {
 			color: var(--color-white)
 		}
 	}
+
+	&--np {
+		padding: 0;
+	}
+
+  &--nomb {
+    margin-bottom: 0;
+  }
 }
 
 .body--results .app-card-panel {
