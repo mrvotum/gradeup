@@ -67,8 +67,9 @@
 }
 
 .app-card-panel {
-	margin-top: auto;
-	// margin-bottom: -17px;
+  position: fixed;
+  width: 100%;
+  bottom: 24px;
 }
 
 .main-header {
