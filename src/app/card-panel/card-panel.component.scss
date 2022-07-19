@@ -50,8 +50,9 @@
   border-radius: 8px;
   margin-left: 10px;
   font-size: 12px;
-  line-height: 18px;
+  line-height: 150%;
   padding: 4px 12px;
+  font-family: 'Roboto Mono', monospace;
 
   @media screen and (max-width: 520px) {
     display: none;
