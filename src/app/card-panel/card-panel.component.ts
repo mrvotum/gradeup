@@ -102,6 +102,7 @@ export class CardPanelComponent implements OnInit {
     // if (!document.querySelector('body--results')) {
       this.isQuizStarted = true;
       this.service.isQuizStartedState = true;
+      document.querySelector('.simple-preloader#preloader')?.remove();
 
       this.service.progressInfo.questionsCount = this.questions.length;
       const questionsAnswered: any = {};
@@ -118,6 +119,7 @@ export class CardPanelComponent implements OnInit {
 
   showResults() {
     const questionsBlocks = document.querySelectorAll('.questions-block');
+    this.service.isQuizStartedState = false;
 
     const radioBtns = document.querySelectorAll('input[type="radio"]:checked');
 		let totalScore = 0;

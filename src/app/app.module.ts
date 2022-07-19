@@ -12,6 +12,7 @@ import { CardSubscribeComponent } from './card-subscribe/card-subscribe.componen
 import { CardInstructionComponent } from './card-instruction/card-instruction.component';
 import { ResultsPageComponent } from './results-page/results-page.component';
 import { CardResultComponent } from './card-result/card-result.component';
+import { PreloaderComponent } from './preloader/preloader.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CardResultComponent } from './card-result/card-result.component';
     CardSubscribeComponent,
     CardInstructionComponent,
     ResultsPageComponent,
-    CardResultComponent
+    CardResultComponent,
+    PreloaderComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,9 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+  transition:
+              opacity 0.4s ease-in-out,
+              transform 0.4s ease-in-out;
 
 	&--instruction {
 		justify-content: center;
@@ -49,6 +52,10 @@
   font-size: 12px;
   line-height: 18px;
   padding: 4px 12px;
+
+  @media screen and (max-width: 520px) {
+    display: none;
+  }
 }
 
 .btn--hidden {
