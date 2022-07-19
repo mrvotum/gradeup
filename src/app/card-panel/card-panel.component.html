@@ -1,4 +1,4 @@
-<div class="btn__holder" *ngIf="isQuizStarted; else showInstruction">
+<div class="btn__holder" *ngIf="service.isQuizStartedState; else showInstruction">
 	<button class="btn btn--prev" (click)="changeQuestion(false)" [disabled]="service.disabled.prev">
 		<span class="btn__text">Назад</span>
 	</button>
@@ -13,8 +13,10 @@
 			<span id="questions-total" class="progress-bar__info-total">{{service.progressInfo.questionsCount}}</span>
 		</div>
 	</div>
-	<button id="btn--next" class="btn btn--next" (click)="changeQuestion(true)" [disabled]="service.disabled.next">Дальше</button>
+	<button id="btn--next" class="btn btn--next" (click)="changeQuestion(true)" [disabled]="service.disabled.next">Дальше<span class="">Enter</span></button>
 	<button class="btn btn--results btn--hidden" routerLink="/results" (click)="showResults()" [disabled]="service.disabled.next">Узнать результаты</button>
+
+
 	<!-- <a style="position: absolute; top: 0;" routerLink="/results" (click)="randomInfo()">Random info</a> -->
 </div>
 

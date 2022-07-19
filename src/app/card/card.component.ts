@@ -18,7 +18,13 @@ export class CardComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    document.querySelector('body')?.classList.add('test-started');
+    const bodyMain = document.querySelector('body');
+    bodyMain?.classList.add('test-started');
+    if (bodyMain?.classList.contains('body--results')) {
+      bodyMain?.classList.remove('body--results');
+    }
+
+    this.service.quizeFisrtInit = true;
 
     this.serviceReader.getJSON().subscribe(data => {
       this.testDB = data;
