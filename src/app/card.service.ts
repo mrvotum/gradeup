@@ -9,6 +9,8 @@ export class CardService {
   // Тут будет информация о том, какие вопросы уже пройдены
   questionsAnswered: any = [];
 
+  isQuizStartedState = false;
+
   progressInfo = {
     // прогрес-бар: вопросов с ответами
     answeredQuestionWidth: 'width: 00%',

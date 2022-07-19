@@ -22,18 +22,7 @@ export class CardPanelComponent implements OnInit {
 
   constructor(public service: CardService) { }
 
-  ngOnInit(): void {
-    // document.addEventListener('DOMContentLoaded', () => {
-    //   if (document.querySelector('body.test-started')) {
-    //     this.startQuiz();
-
-        // Пока только для отладки
-        // document.addEventListener( 'keyup', event => {
-        //   if( event.keyCode === 13 ) this.changeQuestion(true);
-        // });
-    //   }
-    // });
-  }
+  ngOnInit(): void { }
 
   ngDoCheck() {
     if (this.fisrtInit) {
@@ -44,7 +33,14 @@ export class CardPanelComponent implements OnInit {
         // this.service.progressInfo.questionsCount = questions.length;
 
         this.startQuiz();
+
+        // Добавляем возможность перехода к следующему вопросу по нажатию на Enter
+        document.addEventListener( 'keyup', event => {
+          if( event.keyCode === 13 && !this.service.disabled.next ) this.changeQuestion(true);
+        });
       }
+    } else if (!this.service.isQuizStartedState) {
+      this.service.isQuizStartedState = true;
     }
   }
 
@@ -52,6 +48,7 @@ export class CardPanelComponent implements OnInit {
 
   randomInfo() {
     document.querySelector('body')?.classList.add('body--results');
+    this.service.isQuizStartedState = false;
 
     this.service.progressInfo.maxScore = 140;
     this.service.progressInfo.totalScore = 86;
@@ -102,8 +99,9 @@ export class CardPanelComponent implements OnInit {
   }
 
   startQuiz() {
-    if (!document.querySelector('body--results')) {
+    // if (!document.querySelector('body--results')) {
       this.isQuizStarted = true;
+      this.service.isQuizStartedState = true;
 
       this.service.progressInfo.questionsCount = this.questions.length;
       const questionsAnswered: any = {};
@@ -115,7 +113,7 @@ export class CardPanelComponent implements OnInit {
       this.service.questionsAnswered.push(questionsAnswered);
 
       this.convertCountToPercent();
-    }
+    // }
   }
 
   showResults() {

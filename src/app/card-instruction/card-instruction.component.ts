@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CardService } from '../card.service';
 
 @Component({
   selector: 'app-card-instruction',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardInstructionComponent implements OnInit {
 
-  constructor() { }
+  constructor(public service: CardService) { }
 
   ngOnInit(): void {
+    this.service.isQuizStartedState = false;
   }
 
 }
