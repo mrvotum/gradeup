@@ -83,6 +83,7 @@ export class CardService {
   cleanVaribles() {
     // Тут будет информация о том, какие вопросы уже пройдены
     this.questionsAnswered = [];
+    this.statistic = [];
 
     this.progressInfo = {
       // прогрес-бар: вопросов с ответами
