@@ -18,18 +18,20 @@ export class CardPanelComponent implements OnInit {
 
   isQuizStarted = false;
   isFirstSearch = true;
-  fisrtInit = true;
+  // fisrtInit = true;
 
   constructor(public service: CardService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.service.cleanVaribles();
+  }
 
   ngDoCheck() {
-    if (this.fisrtInit) {
+    if (this.service.quizeFisrtInit) {
       const questions = document.getElementsByClassName('card');
 
       if (questions.length > 0 && document.querySelector('body.test-started')) {
-        this.fisrtInit = false;
+        this.service.quizeFisrtInit = false;
         // this.service.progressInfo.questionsCount = questions.length;
 
         this.startQuiz();
@@ -39,8 +41,6 @@ export class CardPanelComponent implements OnInit {
           if( event.keyCode === 13 && !this.service.disabled.next ) this.changeQuestion(true);
         });
       }
-    } else if (!this.service.isQuizStartedState) {
-      this.service.isQuizStartedState = true;
     }
   }
 
@@ -49,6 +49,7 @@ export class CardPanelComponent implements OnInit {
   randomInfo() {
     document.querySelector('body')?.classList.add('body--results');
     this.service.isQuizStartedState = false;
+    this.service.activePreloader = true;
 
     this.service.progressInfo.maxScore = 140;
     this.service.progressInfo.totalScore = 86;
@@ -102,7 +103,6 @@ export class CardPanelComponent implements OnInit {
     // if (!document.querySelector('body--results')) {
       this.isQuizStarted = true;
       this.service.isQuizStartedState = true;
-      document.querySelector('.simple-preloader#preloader')?.remove();
 
       this.service.progressInfo.questionsCount = this.questions.length;
       const questionsAnswered: any = {};
@@ -114,12 +114,21 @@ export class CardPanelComponent implements OnInit {
       this.service.questionsAnswered.push(questionsAnswered);
 
       this.convertCountToPercent();
+
+      const preloader = document.querySelector('.simple-preloader#preloader');
+      preloader?.classList.add('hide');
+      setTimeout(() => {
+        preloader?.remove();
+        this.service.activePreloader = false;
+      }, 400);
     // }
   }
 
   showResults() {
     const questionsBlocks = document.querySelectorAll('.questions-block');
     this.service.isQuizStartedState = false;
+    this.service.quizeFisrtInit = true;
+    this.service.activePreloader = true;
 
     const radioBtns = document.querySelectorAll('input[type="radio"]:checked');
 		let totalScore = 0;

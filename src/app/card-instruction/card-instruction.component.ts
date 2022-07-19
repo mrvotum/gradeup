@@ -11,7 +11,10 @@ export class CardInstructionComponent implements OnInit {
   constructor(public service: CardService) { }
 
   ngOnInit(): void {
+    this.service.cleanVaribles();
+
     this.service.isQuizStartedState = false;
+    this.service.quizeFisrtInit = false;
   }
 
 }

@@ -6,6 +6,7 @@
   height: 100vh;
   background-color: var(--color-body);
   z-index: 99;
+  transition: opacity 0.4s ease-in-out;
 
   &::before {
     position: fixed;
@@ -20,6 +21,10 @@
     border-radius: 50%;
     -webkit-animation: spin-animation 1s infinite linear;
           animation: spin-animation 1s infinite linear;
+  }
+
+  &.hide {
+    opacity: 0;
   }
 }
 

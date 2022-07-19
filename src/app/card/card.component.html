@@ -1,5 +1,3 @@
-<app-preloader></app-preloader>
-
 <div class="questions-block" *ngFor="let block of testDB; let i = index">
 	<div class="card" [class.card--hidden]="!setAttributes('first', question.questionCount)"
 		*ngFor="let question of block.questions; let j = index"
@@ -29,3 +27,6 @@
 		</div>
 	</div>
 </div>
+
+<app-card-panel class="app-card-panel"></app-card-panel>
+<app-preloader *ngIf="service.activePreloader"></app-preloader>
