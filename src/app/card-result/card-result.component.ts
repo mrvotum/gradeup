@@ -23,6 +23,16 @@ export class CardResultComponent implements OnInit {
       this.testDB = data;
       this.service.testDB = data;
     });
+
+    // Проверяем, есть ли на странице пройденные результаты
+    const checkCookie = this.service.testCookie('testDone');
+    if (checkCookie == 'true') {
+      // Куки есть и переход по прямой ссылке
+      this.service.levelGrade.levelName = this.service.testCookie('levelName');
+      this.service.levelGrade.imgUrl = this.service.testCookie('imgUrl');
+      this.service.levelGrade.alt = this.service.testCookie('alt');
+      this.service.progressInfo.totalScore = Number(this.service.testCookie('totalScore'));
+    }
   }
 
   @ViewChild('content', { static: true }) el!: ElementRef<HTMLImageElement>;

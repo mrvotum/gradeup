@@ -79,6 +79,26 @@ export class CardService {
 
   constructor() { }
 
+  // Передаём сюда информацию, которую необходимо найти
+  testCookie(name: string) {
+    let nameEQ = name + "=";
+    let ca = document.cookie.split(';');
+    let searchedInfo = '';
+
+    for( let i = 0; i < ca.length; i++ ) {
+      let c = ca[i];
+
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+
+      if (c.indexOf(nameEQ) == 0) {
+        searchedInfo = c.substring(nameEQ.length,c.length)
+      };
+
+    }
+
+    return searchedInfo;
+  }
+
   // Обнулить все значения
   cleanVaribles() {
     // Тут будет информация о том, какие вопросы уже пройдены

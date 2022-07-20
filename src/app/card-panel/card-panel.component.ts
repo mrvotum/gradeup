@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { CardService } from '../card.service';
 
 @Component({
@@ -165,6 +165,8 @@ export class CardPanelComponent implements OnInit {
 		}
 
     document.querySelector('body')?.classList.add('body--results');
+    // Тест пройден, даём об этом знать кукам
+    document.cookie = 'testDone=true';
   }
 
   convertToPoints(totalScore: Number) {
@@ -184,6 +186,21 @@ export class CardPanelComponent implements OnInit {
     } else if (scoreInPercent > 81) {
       this.service.levelGrade = this.service.levelData.lead;
     }
+
+    this.setCookiesLeveGrade();
+    console.log(document.cookie);
+  }
+
+  setCookiesLeveGrade() {
+    // Исправить в дальнейшем на перебор
+    // for (const prop in this.service.levelGrade) {
+    //   document.cookie = `${prop}=${this.service.levelGrade[prop]}`;
+    // }
+
+    document.cookie = `levelName=${this.service.levelGrade.levelName}`;
+    document.cookie = `imgUrl=${this.service.levelGrade.imgUrl}`;
+    document.cookie = `alt=${this.service.levelGrade.alt}`;
+    document.cookie = `totalScore=${this.service.progressInfo.totalScore}`;
   }
 
   convertCountToPercent() {
