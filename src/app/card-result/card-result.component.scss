@@ -209,7 +209,7 @@
 		&--fixed {
 			// position: absolute;
 			position: -webkit-sticky;
-      position: sticky;
+			position: sticky;
 			width: 230px;
 			padding: 16px;
 			top: 0;
@@ -220,16 +220,16 @@
 			}
 		}
 
-    strong {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: 600;
-    }
+		strong {
+		display: block;
+		margin-bottom: 6px;
+		font-weight: 600;
+		}
 
 		span {
 			display: block;
 			margin-bottom: 12px;
-      color: var(--color-grey);
+			color: var(--color-grey);
 		}
 
 		.btn__wrapper {
