@@ -12,6 +12,7 @@ import html2canvas from 'html2canvas';
 })
 export class CardResultComponent implements OnInit {
   testDB: any = null;
+  accordionIsOpen: boolean = false;
 
   constructor(
     public service: CardService,
@@ -62,5 +63,9 @@ export class CardResultComponent implements OnInit {
     } else {
       cardFooter?.classList.add('card__footer--print-v');
     }
+  }
+
+  accordionToggle() {
+    this.accordionIsOpen = !this.accordionIsOpen;
   }
 }
