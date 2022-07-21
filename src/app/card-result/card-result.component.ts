@@ -28,7 +28,7 @@ export class CardResultComponent implements OnInit {
     // Проверяем, есть ли на странице пройденные результаты
     const checkCookie = this.service.testCookie('testDone');
     if (checkCookie == 'true') {
-      // Куки есть и переход по прямой ссылке
+      // Куки есть и переход по прямой ссылке, значит нужно расставить сохранённые результаты
       this.service.levelGrade.levelName = this.service.testCookie('levelName');
       this.service.levelGrade.imgUrl = this.service.testCookie('imgUrl');
       this.service.levelGrade.alt = this.service.testCookie('alt');
