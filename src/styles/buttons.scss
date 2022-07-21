@@ -1,0 +1,31 @@
+.btn {
+	font-size: var(--root-font-size);
+	line-height: 120%;
+	border-radius: 16px;
+	padding: 23px 16px;
+	min-width: 214px;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.2s ease-in-out;
+	background-color: var(--color-secondary);
+	color: var(--color-black);
+
+	&:hover {
+		background-color: var(--color-secondary--hover);
+	}
+
+	&:active {
+		background-color: var(--color-secondary--active);
+	}
+
+	&:disabled {
+		color: var(--color-secondary--disable);
+	}
+}
+
+@media screen and (max-width: 520px) {
+	.btn {
+		padding: 13px 16px;
+		min-width: 116px;
+	}
+}
