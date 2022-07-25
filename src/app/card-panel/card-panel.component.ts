@@ -19,6 +19,8 @@ export class CardPanelComponent implements OnInit {
   isQuizStarted = false;
   isFirstSearch = true;
   // fisrtInit = true;
+  showResultBtn = false;
+  showNextBtn = true;
 
   constructor(public service: CardService) { }
 
@@ -188,18 +190,15 @@ export class CardPanelComponent implements OnInit {
     }
 
     this.setCookiesLeveGrade();
-    console.log(document.cookie);
+    // console.log(document.cookie);
   }
 
   setCookiesLeveGrade() {
-    // Исправить в дальнейшем на перебор
-    // for (const prop in this.service.levelGrade) {
-    //   document.cookie = `${prop}=${this.service.levelGrade[prop]}`;
-    // }
-
-    document.cookie = `levelName=${this.service.levelGrade.levelName}`;
-    document.cookie = `imgUrl=${this.service.levelGrade.imgUrl}`;
-    document.cookie = `alt=${this.service.levelGrade.alt}`;
+    // Добавляем в куки результаты из шапки карточки результатов
+    Object.entries(this.service.levelGrade).forEach(([key, value]) => {
+      document.cookie = `${key}=${value}`;
+    });
+    // Добавляем в куки итоговые баллы из шапки карточки результатов
     document.cookie = `totalScore=${this.service.progressInfo.totalScore}`;
   }
 
@@ -256,12 +255,12 @@ export class CardPanelComponent implements OnInit {
 
           if (nextQuestion?.getAttribute('data-last') == 'true') {
             // Показываем кнопку с результатами
-            document.querySelector('.btn--next')?.classList.add('btn--hidden');
-            document.querySelector('.btn--results')?.classList.remove('btn--hidden');
+            this.showResultBtn = !this.showResultBtn;
+            this.showNextBtn = !this.showNextBtn;
           } else if (!isNext && element.getAttribute('data-last') == 'true') {
             // Шагаем назад, значит снова прячем кнопку с результатами
-            document.querySelector('.btn--next')?.classList.remove('btn--hidden');
-            document.querySelector('.btn--results')?.classList.add('btn--hidden');
+            this.showResultBtn = !this.showResultBtn;
+            this.showNextBtn = !this.showNextBtn;
           }
 
         } else {

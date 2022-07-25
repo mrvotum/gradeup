@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
 
+interface LevelGrade {
+  levelName: string,
+  imgUrl: string,
+  alt: string
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -35,7 +40,7 @@ export class CardService {
     grade: 'beginner'
   };
 
-  levelGrade = {
+  levelGrade: LevelGrade = {
     levelName: 'Beginner',
     imgUrl: '/assets/images/dude-beginner.png',
     alt: 'Beginner dude'
