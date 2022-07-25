@@ -22,9 +22,10 @@
       </ng-template>
 
       <div class="score">Score: {{service.progressInfo.totalScore}}</div>
-      <img class="result__img"
+      <div class="result__img" [attr.data-image]="service.levelGrade.alt | lowercase"></div>
+      <!-- <img class="result__img"
         [attr.src]="service.levelGrade.imgUrl"
-        [attr.alt]="service.levelGrade.alt">
+        [attr.alt]="service.levelGrade.alt"> -->
     </div>
 
     <div class="card__footer">

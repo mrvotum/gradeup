@@ -87,10 +87,37 @@
 	}
 
 	&__img {
-    width: 50%;
 		position: absolute;
-		right: 45px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right top;
+    width: 90%;
+		right: 0;
 		bottom: 0;
+    height: 100%;
+
+
+    &[data-image="beginner"] {
+      background-image: url('/assets/images/dude-beginner.png');
+      right: -100px;
+      bottom: -50px;
+    }
+
+    &[data-image="junior"] {
+      background-image: url('/assets/images/dude-junior.png');
+    }
+
+    &[data-image="middle"] {
+      background-image: url('/assets/images/dude-middle.png');
+    }
+
+    &[data-image="senior"] {
+      background-image: url('/assets/images/dude-senior.png');
+    }
+
+    &[data-image="lead"] {
+      background-image: url('/assets/images/dude-lead.png');
+    }
 	}
 }
 
@@ -314,10 +341,10 @@
     font-size: 54px;
   }
 
-  .result__img {
-    right: 0;
-    width: 32%;
-  }
+  // .result__img {
+  //   right: 0;
+  //   width: 32%;
+  // }
 
   .card__footer {
     flex-direction: column;
@@ -419,6 +446,7 @@
     padding: 20px 0 20px 20px;
     border-radius: 0px 0px 12px 12px;
     background-image: url('/assets/images/result-bg_mob.svg');
+    overflow: hidden;
 
     &__info {
       font-size: 48px;
@@ -447,10 +475,30 @@
     }
 
     &__img {
-      width: 50%;
-      position: absolute;
-      right: 45px;
-      bottom: 0;
+      max-height: 400px;
+      pointer-events: none;
+      bottom: -1px;
+
+      &[data-image="beginner"] {
+        right: -40px;
+        background-position: right;
+      }
+
+      &[data-image="junior"] {
+        background-image: url('/assets/images/dude-junior_mob.svg');
+      }
+
+      &[data-image="middle"] {
+        background-image: url('/assets/images/dude-middle_mob.svg');
+      }
+
+      &[data-image="senior"] {
+        background-image: url('/assets/images/dude-senior_mob.svg');
+      }
+
+      &[data-image="lead"] {
+        background-image: url('/assets/images/dude-lead_mob.svg');
+      }
     }
   }
 
