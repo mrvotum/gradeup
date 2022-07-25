@@ -209,7 +209,7 @@
 		&--fixed {
 			// position: absolute;
 			position: -webkit-sticky;
-      position: sticky;
+			position: sticky;
 			width: 230px;
 			padding: 16px;
 			top: 0;
@@ -220,16 +220,16 @@
 			}
 		}
 
-    strong {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: 600;
-    }
+		strong {
+		display: block;
+		margin-bottom: 6px;
+		font-weight: 600;
+		}
 
 		span {
 			display: block;
 			margin-bottom: 12px;
-      color: var(--color-grey);
+			color: var(--color-grey);
 		}
 
 		.btn__wrapper {
@@ -257,6 +257,46 @@
 					background-color: var(--color-primary--active);
 				}
 			}
+		}
+	}
+}
+
+.accordion {
+	&__btn {
+		display: flex;
+		justify-content: center;
+		margin-top: 40px;
+
+		&-title {
+			position: relative;
+			cursor: pointer;
+			font-weight: 400;
+
+			&::before {
+				position: absolute;
+				content: '';
+				top: 50%;
+				left: calc(100% + 12px);
+				width: 7px;
+				height: 7px;
+				border: 2px solid var(--color-black);
+				border-radius: 2px;
+				border-top: none;
+				border-right: none;
+				transform: translateY(-50%) rotate(-45deg);
+			}
+		}
+
+		&.is-open .accordion__btn-title::before {
+			transform: translateY(calc(-50% + 4px)) rotate(135deg);
+		}
+	}
+
+	&__content {
+		display: none;
+
+		&.is-open {
+			display: block;
 		}
 	}
 }

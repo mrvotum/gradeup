@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { CardService } from '../card.service';
 
 @Component({
@@ -19,6 +19,8 @@ export class CardPanelComponent implements OnInit {
   isQuizStarted = false;
   isFirstSearch = true;
   // fisrtInit = true;
+  showResultBtn = false;
+  showNextBtn = true;
 
   constructor(public service: CardService) { }
 
@@ -165,6 +167,8 @@ export class CardPanelComponent implements OnInit {
 		}
 
     document.querySelector('body')?.classList.add('body--results');
+    // Тест пройден, даём об этом знать кукам
+    document.cookie = 'testDone=true';
   }
 
   convertToPoints(totalScore: Number) {
@@ -184,6 +188,18 @@ export class CardPanelComponent implements OnInit {
     } else if (scoreInPercent > 81) {
       this.service.levelGrade = this.service.levelData.lead;
     }
+
+    this.setCookiesLeveGrade();
+    // console.log(document.cookie);
+  }
+
+  setCookiesLeveGrade() {
+    // Добавляем в куки результаты из шапки карточки результатов
+    Object.entries(this.service.levelGrade).forEach(([key, value]) => {
+      document.cookie = `${key}=${value}`;
+    });
+    // Добавляем в куки итоговые баллы из шапки карточки результатов
+    document.cookie = `totalScore=${this.service.progressInfo.totalScore}`;
   }
 
   convertCountToPercent() {
@@ -239,12 +255,12 @@ export class CardPanelComponent implements OnInit {
 
           if (nextQuestion?.getAttribute('data-last') == 'true') {
             // Показываем кнопку с результатами
-            document.querySelector('.btn--next')?.classList.add('btn--hidden');
-            document.querySelector('.btn--results')?.classList.remove('btn--hidden');
+            this.showResultBtn = !this.showResultBtn;
+            this.showNextBtn = !this.showNextBtn;
           } else if (!isNext && element.getAttribute('data-last') == 'true') {
             // Шагаем назад, значит снова прячем кнопку с результатами
-            document.querySelector('.btn--next')?.classList.remove('btn--hidden');
-            document.querySelector('.btn--results')?.classList.add('btn--hidden');
+            this.showResultBtn = !this.showResultBtn;
+            this.showNextBtn = !this.showNextBtn;
           }
 
         } else {

@@ -1,14 +1,14 @@
 <div id="content" #content>
   <div class="card card--np">
     <div class="result" style="background-size: cover;">
-      <h1 class="result__info" *ngIf="service.levelGrade.levelName === 'Beginner'; else kek">
+      <h1 class="result__info" *ngIf="service.levelGrade.levelName === 'Beginner'; else easterEgg">
         <span class="subtitle">Кажется</span>
         <span class="title">Oh shit,</span>
         <span class="result__level">that is you</span>
       </h1>
 
-      <!-- Нужен для события, когда сверху прилетает false -->
-      <ng-template #kek>
+      <!-- Нужен для события, когда сверху прилетает false и результатов совсем нет/до 100 баллов -->
+      <ng-template #easterEgg>
         <h1 class="result__info">
           <span class="subtitle">Кажется</span>
           <span class="title">You are</span>
@@ -64,10 +64,21 @@
         <!-- <span style="position: absolute;left: 20px;top: 50%;transform: translateY(-50%);">{{ bar.categoryTotalScore }} из {{ bar.categoryMaxScore }}</span> -->
       </div>
     </div>
-    <div class="competence-map__legend">
-      <div class="competence-map__legend-el" *ngFor="let block of testDB; let j = index">
-        <p>{{ j + 1 }}</p>
-        <p *ngFor="let question of block.questions; let j = index" [innerHTML]="question.title"></p>
+    <div class="accordion">
+      <div class="accordion__content" [class.is-open]="accordionIsOpen">
+        <div class="competence-map__legend">
+          <div class="competence-map__legend-el" *ngFor="let block of testDB; let j = index">
+            <p>{{ j + 1 }}</p>
+            <p *ngFor="let question of block.questions; let j = index" [innerHTML]="question.title"></p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion__btn" [class.is-open]="accordionIsOpen" (click)="accordionToggle()">
+        <span class="accordion__btn-title" *ngIf="accordionIsOpen; else accordionOpenedTitle">Скрыть</span>
+        <!-- Если вкладка закрыта, то меняем текст -->
+        <ng-template #accordionOpenedTitle>
+          <span class="accordion__btn-title">Посмотреть, какие вопросы были в&nbsp;каждом блоке</span>
+        </ng-template>
       </div>
     </div>
 

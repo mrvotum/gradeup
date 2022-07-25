@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
 
+interface LevelGrade {
+  levelName: string,
+  imgUrl: string,
+  alt: string
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -35,7 +40,7 @@ export class CardService {
     grade: 'beginner'
   };
 
-  levelGrade = {
+  levelGrade: LevelGrade = {
     levelName: 'Beginner',
     imgUrl: '/assets/images/dude-beginner.png',
     alt: 'Beginner dude'
@@ -78,6 +83,26 @@ export class CardService {
   testDB: any = [];
 
   constructor() { }
+
+  // Передаём сюда информацию, которую необходимо найти
+  testCookie(name: string) {
+    let nameEQ = name + "=";
+    let ca = document.cookie.split(';');
+    let searchedInfo = '';
+
+    for( let i = 0; i < ca.length; i++ ) {
+      let c = ca[i];
+
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+
+      if (c.indexOf(nameEQ) == 0) {
+        searchedInfo = c.substring(nameEQ.length,c.length)
+      };
+
+    }
+
+    return searchedInfo;
+  }
 
   // Обнулить все значения
   cleanVaribles() {

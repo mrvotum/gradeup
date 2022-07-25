@@ -12,6 +12,7 @@ import html2canvas from 'html2canvas';
 })
 export class CardResultComponent implements OnInit {
   testDB: any = null;
+  accordionIsOpen: boolean = false;
 
   constructor(
     public service: CardService,
@@ -23,6 +24,16 @@ export class CardResultComponent implements OnInit {
       this.testDB = data;
       this.service.testDB = data;
     });
+
+    // Проверяем, есть ли на странице пройденные результаты
+    const checkCookie = this.service.testCookie('testDone');
+    if (checkCookie == 'true') {
+      // Куки есть и переход по прямой ссылке, значит нужно расставить сохранённые результаты
+      this.service.levelGrade.levelName = this.service.testCookie('levelName');
+      this.service.levelGrade.imgUrl = this.service.testCookie('imgUrl');
+      this.service.levelGrade.alt = this.service.testCookie('alt');
+      this.service.progressInfo.totalScore = Number(this.service.testCookie('totalScore'));
+    }
   }
 
   @ViewChild('content', { static: true }) el!: ElementRef<HTMLImageElement>;
@@ -52,5 +63,9 @@ export class CardResultComponent implements OnInit {
     } else {
       cardFooter?.classList.add('card__footer--print-v');
     }
+  }
+
+  accordionToggle() {
+    this.accordionIsOpen = !this.accordionIsOpen;
   }
 }
