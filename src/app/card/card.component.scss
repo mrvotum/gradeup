@@ -83,6 +83,7 @@ ul {
 	width: 100%;
 	display: inline-block;
 	margin-bottom: 16px;
+	-webkit-tap-highlight-color: transparent;
 
 	&:last-child {
 		margin-bottom: 0;
@@ -126,15 +127,6 @@ input[type="radio"]:checked + .answer__el {
 		overflow: visible;
 		max-height: none;
 	}
-
-  .answer__el {
-    cursor: default;
-    -webkit-tap-highlight-color: transparent;
-
-    &:active {
-      -webkit-tap-highlight-color: transparent;
-    }
-  }
 
 	ul {
 		padding-left: 30px;
