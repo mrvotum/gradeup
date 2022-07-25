@@ -56,6 +56,75 @@
 	}
 }
 
+.card--with-aside {
+	position: relative;
+
+	.custom__aside {
+		position: absolute;
+		top: 0;
+		left: calc(100% + 8px);
+		height: 100%;
+	}
+
+	.prompt {
+		background-color: var(--color-white);
+		border-radius: 24px;
+
+		&--fixed {
+			position: -webkit-sticky;
+			position: sticky;
+      width: calc((100vw - 970px) / 2);
+			max-width: 230px;
+			padding: 16px;
+			top: 0;
+			left: calc(100% + 8px);
+
+			.btn {
+				width: 100%;
+			}
+		}
+
+		strong {
+		display: block;
+		margin-bottom: 6px;
+		font-weight: 600;
+		}
+
+		span {
+			display: block;
+			margin-bottom: 12px;
+			color: var(--color-grey);
+		}
+
+		.btn__wrapper {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.btn {
+			display: inline-block;
+			text-decoration: none;
+			text-align: center;
+			padding: 16px 30px;
+			font-weight: 600;
+			min-width: auto;
+
+			&--colored {
+				background-color: var(--color-primary);
+				color: var(--color-white);
+
+				&:hover {
+					background-color: var(--color-primary--hover);
+				}
+
+				&:active {
+					background-color: var(--color-primary--active);
+				}
+			}
+		}
+	}
+}
+
 @media screen and (max-width: 520px) {
 	.card {
 		width: 100%;
