@@ -1,3 +1,7 @@
+.logo {
+  display: none;
+}
+
 .card {
   position: relative;
 
@@ -290,9 +294,72 @@
 }
 
 @media screen and (max-width: 520px) {
-  .card .line-grid {
-    left: 8px;
-    width: calc(100% - 8px);
+  .logo {
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .card {
+    // padding: 0;
+
+    .line-grid {
+      left: 8px;
+      width: calc(100% - 8px);
+    }
+
+    &__footer {
+      padding: 20px;
+
+      .prompt {
+        margin-bottom: 16px;
+        align-self: flex-start;
+      }
+
+      .btn:last-child {
+        margin-left: 8px;
+      }
+    }
+  }
+
+  .result {
+    width: 100vw;
+    margin-top: -16px;
+    padding: 20px 0 20px 20px;
+    border-radius: 0px 0px 12px 12px;
+    background-image: url('/assets/images/result-bg_mob.svg');
+
+    &__info {
+      font-size: 48px;
+      line-height: 95%;
+      margin-bottom: 200px;
+
+      .subtitle {
+        display: none;
+      }
+
+      .title {
+        font-weight: 700;
+      }
+
+      .result__level {
+        display: block;
+        max-width: 60vw;
+        font-weight: 700;
+      }
+    }
+
+    .score {
+      font-size: 1.29em;
+      padding: 1em 1.1em;
+      border-radius: 16px;
+    }
+
+    &__img {
+      width: 50%;
+      position: absolute;
+      right: 45px;
+      bottom: 0;
+    }
   }
 
   .custom__aside {

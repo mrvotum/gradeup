@@ -1,6 +1,11 @@
 <div id="content" #content>
   <div class="card card--np">
     <div class="result" style="background-size: cover;">
+      <div class="logo">
+        <a href="https://readymag.com/VorkelVlad/3800406/" target="_blank" rel="Landing">
+          <img src="/assets/images/logo_mob.svg" alt="logo">
+        </a>
+      </div>
       <h1 class="result__info" *ngIf="service.levelGrade.levelName === 'Beginner'; else kek">
         <span class="subtitle">Кажется</span>
         <span class="title">Oh shit,</span>
@@ -24,7 +29,7 @@
 
     <div class="card__footer">
       <div class="prompt">
-        Скачайте нужный формат результатов, чтобы поделиться&nbsp;им
+        Скачайте нужный формат результатов,<br class="hidden show-xs"> чтобы поделиться&nbsp;им
       </div>
       <div class="btn__wrapper">
         <button class="btn">Сторис<br>в инсту</button>
