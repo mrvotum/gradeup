@@ -100,15 +100,9 @@ ul {
 	line-height: 120%;
 	box-sizing: border-box;
 	padding: 16px 24px 16px 24px;
-  -webkit-tap-highlight-color: transparent;
 
 	&:hover {
-		-webkit-tap-highlight-color: transparent;
 		border-color: var(--color-very-light-grey);
-	}
-
-	&:active {
-		-webkit-tap-highlight-color: transparent;
 	}
 
 	strong {
@@ -132,6 +126,11 @@ input[type="radio"]:checked + .answer__el {
 		overflow: visible;
 		max-height: none;
 	}
+
+  .answer__el {
+    cursor: default;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  }
 
 	ul {
 		padding-left: 30px;
