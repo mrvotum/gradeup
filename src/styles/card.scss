@@ -85,6 +85,21 @@
 		}
 	}
 
+  .body--results {
+    .card {
+      border-radius: 24px;
+      padding: 24px 20px;
+      margin-bottom: 6px;
+    }
+
+    .card__title {
+      display: inline-block;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-left: 8px;
+    }
+  }
+
 	.btn {
 		padding: 13px 16px;
 		min-width: 116px;

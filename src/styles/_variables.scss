@@ -37,7 +37,8 @@
 	}
 
 	@media screen and (max-width: 520px) {
-		--color-body: var(--color-white);
+		// --color-body: var(--color-white);
+		--color-body: black;
 		--root-font-size: 14px;
 	}
 }

@@ -100,6 +100,10 @@ div {
     display: block;
   }
 
+  .hide-xs {
+    display: none !important;
+  }
+
 	.main-header,
 	.main-footer {
 		display: none;
