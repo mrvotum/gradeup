@@ -44,10 +44,14 @@
     font-weight: 600;
   }
 
-	span {
+	&__text {
 		display: block;
 		margin-bottom: 12px;
     color: var(--color-grey);
+
+    &--mobile {
+      display: none;
+    }
 	}
 
 	.btn__wrapper {
@@ -76,4 +80,34 @@
 			}
 		}
 	}
+}
+
+@media screen and (max-width: 520px) {
+  .prompt {
+    margin: 0;
+    max-width: none;
+    padding: 8px 0 0;
+    box-shadow: none;
+
+    strong {
+      display: none;
+    }
+
+    &__text {
+      display: none;
+      margin-bottom: 24px;
+      color: var(--color-grey);
+      font-size: 18px;
+      padding-left: 8px;
+      max-width: 270px;
+
+      &--mobile {
+        display: block;
+      }
+    }
+
+    .btn {
+      width: 28%;
+    }
+  }
 }

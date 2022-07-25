@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 interface LevelGrade {
   levelName: string,
-  imgUrl: string,
+  // imgUrl: string,
   alt: string
 }
 @Injectable({
@@ -42,35 +42,35 @@ export class CardService {
 
   levelGrade: LevelGrade = {
     levelName: 'Beginner',
-    imgUrl: '/assets/images/dude-beginner.png',
-    alt: 'Beginner dude'
+    // imgUrl: '/assets/images/dude-beginner.png',
+    alt: 'Beginner'
   };
 
   levelData = {
     beginner: {
       levelName: 'Beginner',
-      imgUrl: '/assets/images/dude-beginner.png',
+      // imgUrl: '/assets/images/dude-beginner.png',
       alt: 'Beginner stone'
     },
     junior: {
       levelName: 'Junior designer',
-      imgUrl: '/assets/images/dude-junior.png',
-      alt: 'Junior dude'
+      // imgUrl: '/assets/images/dude-junior.png',
+      alt: 'Junior'
     },
     middle: {
       levelName: 'Middle designer',
-      imgUrl: '/assets/images/dude-middle.png',
-      alt: 'Middle dude'
+      // imgUrl: '/assets/images/dude-middle.png',
+      alt: 'Middle'
     },
     senior: {
       levelName: 'Senior designer',
-      imgUrl: '/assets/images/dude-senior.png',
-      alt: 'Senior dude'
+      // imgUrl: '/assets/images/dude-senior.png',
+      alt: 'Senior'
     },
     lead: {
       levelName: 'Lead designer',
-      imgUrl: '/assets/images/dude-lead.png',
-      alt: 'Lead dude'
+      // imgUrl: '/assets/images/dude-lead.png',
+      alt: 'Lead'
     }
   }
 
@@ -133,8 +133,8 @@ export class CardService {
 
     this.levelGrade = {
       levelName: 'Beginner',
-      imgUrl: '/assets/images/dude-beginner.png',
-      alt: 'Beginner dude'
+      // imgUrl: '/assets/images/dude-beginner.png',
+      alt: 'Beginner'
     };
   }
 }

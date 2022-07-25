@@ -30,7 +30,7 @@ export class CardResultComponent implements OnInit {
     if (checkCookie == 'true') {
       // Куки есть и переход по прямой ссылке, значит нужно расставить сохранённые результаты
       this.service.levelGrade.levelName = this.service.testCookie('levelName');
-      this.service.levelGrade.imgUrl = this.service.testCookie('imgUrl');
+      // this.service.levelGrade.imgUrl = this.service.testCookie('imgUrl');
       this.service.levelGrade.alt = this.service.testCookie('alt');
       this.service.progressInfo.totalScore = Number(this.service.testCookie('totalScore'));
     }

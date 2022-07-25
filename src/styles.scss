@@ -10,6 +10,10 @@
 // Стили кнопок
 @import './styles/buttons';
 
+.hidden {
+  display: none;
+}
+
 .layout {
 	background-color: var(--color-body);
 	padding: 24px;
@@ -92,6 +96,14 @@ div {
 // }
 
 @media screen and (max-width: 520px) {
+  .show-xs {
+    display: block;
+  }
+
+  .hide-xs {
+    display: none !important;
+  }
+
 	.main-header,
 	.main-footer {
 		display: none;
@@ -107,4 +119,8 @@ div {
 		bottom: 0;
 		left: 0;
 	}
+
+  .body--results {
+    background-color: var(--color-white-smoke);
+  }
 }

@@ -1,6 +1,11 @@
 <div id="content" #content>
   <div class="card card--np">
     <div class="result" style="background-size: cover;">
+      <div class="logo">
+        <a href="https://readymag.com/VorkelVlad/3800406/" target="_blank" rel="Landing">
+          <img src="/assets/images/logo_mob.svg" alt="logo">
+        </a>
+      </div>
       <h1 class="result__info" *ngIf="service.levelGrade.levelName === 'Beginner'; else easterEgg">
         <span class="subtitle">Кажется</span>
         <span class="title">Oh shit,</span>
@@ -17,14 +22,15 @@
       </ng-template>
 
       <div class="score">Score: {{service.progressInfo.totalScore}}</div>
-      <img class="result__img"
+      <div class="result__img" [attr.data-image]="service.levelGrade.alt | lowercase"></div>
+      <!-- <img class="result__img"
         [attr.src]="service.levelGrade.imgUrl"
-        [attr.alt]="service.levelGrade.alt">
+        [attr.alt]="service.levelGrade.alt"> -->
     </div>
 
     <div class="card__footer">
       <div class="prompt">
-        Скачайте нужный формат результатов, чтобы поделиться&nbsp;им
+        Скачайте нужный формат результатов,<br class="hidden show-xs"> чтобы поделиться&nbsp;им
       </div>
       <div class="btn__wrapper">
         <button class="btn">Сторис<br>в инсту</button>
@@ -68,7 +74,8 @@
       <div class="accordion__content" [class.is-open]="accordionIsOpen">
         <div class="competence-map__legend">
           <div class="competence-map__legend-el" *ngFor="let block of testDB; let j = index">
-            <p>{{ j + 1 }}</p>
+            <p class="competence-map__legend-el-counter">{{ j + 1 }}</p>
+            <strong class="competence-map__legend-el-title" [innerHTML]="block.theme"></strong>
             <p *ngFor="let question of block.questions; let j = index" [innerHTML]="question.title"></p>
           </div>
         </div>
@@ -77,7 +84,7 @@
         <span class="accordion__btn-title" *ngIf="accordionIsOpen; else accordionOpenedTitle">Скрыть</span>
         <!-- Если вкладка закрыта, то меняем текст -->
         <ng-template #accordionOpenedTitle>
-          <span class="accordion__btn-title">Посмотреть, какие вопросы были в&nbsp;каждом блоке</span>
+          <span class="accordion__btn-title">Посмотреть вопросы теста</span>
         </ng-template>
       </div>
     </div>
