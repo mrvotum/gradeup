@@ -130,6 +130,10 @@ input[type="radio"]:checked + .answer__el {
   .answer__el {
     cursor: default;
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* prevent tap highlight color / shadow */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
   }
 
 	ul {
