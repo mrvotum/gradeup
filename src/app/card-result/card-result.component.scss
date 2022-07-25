@@ -160,6 +160,10 @@
 			color: var(--color-black);
 			padding-right: 10px;
 
+      &-title {
+        display: none;
+      }
+
 			p {
 				margin: 0;
 			}
@@ -361,6 +365,54 @@
     }
   }
 
+  .competence-map {
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+
+  .competence-map__legend {
+    margin-top: 0;
+  }
+
+  .competence-map__legend-el {
+    width: 100%;
+    padding-right: 0;
+    margin-top: 12px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &-title {
+      display: block;
+    }
+
+    &-counter {
+      display: none;
+    }
+  }
+
+  .legend,
+  .line-grid {
+    display: none;
+  }
+
+  .accordion {
+    &__content {
+      background-color: var(--color-white-smoke);
+      padding: 16px;
+      border-radius: 16px;
+    }
+
+    &__btn {
+      margin-top: 0;
+
+      &.is-open {
+        margin-top: 24px;
+      }
+    }
+  }
+
   .result {
     width: 100vw;
     margin-top: -16px;
@@ -404,13 +456,5 @@
 
   .custom__aside {
     display: none;
-  }
-
-  .competence-map__legend-el {
-    width: calc(50%);
-
-    &:nth-last-child(n+2) {
-      margin-top: 12px;
-    }
   }
 }

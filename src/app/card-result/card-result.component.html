@@ -73,7 +73,8 @@
       <div class="accordion__content" [class.is-open]="accordionIsOpen">
         <div class="competence-map__legend">
           <div class="competence-map__legend-el" *ngFor="let block of testDB; let j = index">
-            <p>{{ j + 1 }}</p>
+            <p class="competence-map__legend-el-counter">{{ j + 1 }}</p>
+            <strong class="competence-map__legend-el-title" [innerHTML]="block.theme"></strong>
             <p *ngFor="let question of block.questions; let j = index" [innerHTML]="question.title"></p>
           </div>
         </div>
@@ -82,7 +83,7 @@
         <span class="accordion__btn-title" *ngIf="accordionIsOpen; else accordionOpenedTitle">Скрыть</span>
         <!-- Если вкладка закрыта, то меняем текст -->
         <ng-template #accordionOpenedTitle>
-          <span class="accordion__btn-title">Посмотреть, какие вопросы были в&nbsp;каждом блоке</span>
+          <span class="accordion__btn-title">Посмотреть вопросы теста</span>
         </ng-template>
       </div>
     </div>
