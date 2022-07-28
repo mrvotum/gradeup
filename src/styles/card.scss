@@ -73,7 +73,7 @@
 		&--fixed {
 			position: -webkit-sticky;
 			position: sticky;
-      width: calc((100vw - 970px) / 2);
+			width: calc((100vw - 970px) / 2);
 			max-width: 230px;
 			padding: 16px;
 			top: 0;
@@ -122,6 +122,12 @@
 				}
 			}
 		}
+	}
+}
+
+@media screen and (max-width: 1440px) {
+	.custom__aside {
+		display: none;
 	}
 }
 

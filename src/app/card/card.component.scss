@@ -134,6 +134,7 @@ input[type="radio"]:checked + .answer__el {
 
 		li {
 			padding: 18px 0;
+			font-weight: 400;
 
 			&::before {
 				right: calc(100% + 12px);
