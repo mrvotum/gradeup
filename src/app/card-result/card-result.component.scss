@@ -394,7 +394,7 @@
 
       @each $level in $levels {
         &[data-image="#{$level}"] {
-          background-image: url('/assets/images/dude-#{$level}_mob.svg');
+          background-image: url('/assets/images/dude-#{$level}_mob.png');
         }
       }
 		}
