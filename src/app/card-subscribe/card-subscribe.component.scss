@@ -106,8 +106,16 @@
       }
     }
 
-    .btn {
-      width: 28%;
-    }
+	.btn__wrapper {
+		width: 100%;
+	}
+
+	.btn {
+		width: calc(50% - 6px);
+	}
+
+    .btn + .btn {
+		margin-left: 12px;
+	}
   }
 }

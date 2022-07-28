@@ -82,7 +82,7 @@
 		position: absolute;
 		background-size: contain;
 		background-repeat: no-repeat;
-		background-position: right top;
+		background-position: right bottom;
 		width: 90%;
 		right: 0;
 		bottom: 0;
@@ -292,8 +292,17 @@
 				align-self: flex-start;
 			}
 
-			.btn:last-child {
-				margin-left: 8px;
+			.btn__wrapper {
+				width: 100%;
+			}
+
+			.btn {
+				width: calc(50% - 4px);
+				min-width: auto;
+
+				&:last-child {
+					margin-left: 8px;
+				}
 			}
 		}
 	}
@@ -340,6 +349,15 @@
 		&__btn {
 			margin-top: 0;
 
+			&-title {
+				padding-right: 26px;
+
+				&::before {
+					left: auto;
+					right: 0;
+				}
+			}
+
 			&.is-open {
 				margin-top: 24px;
 			}
@@ -381,7 +399,8 @@
 		}
 
 		&__img {
-			max-height: 400px;
+			// max-height: 400px;
+			width: 100%;
 			pointer-events: none;
 			bottom: -1px;
 
