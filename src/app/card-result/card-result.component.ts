@@ -13,7 +13,7 @@ import html2canvas from 'html2canvas';
 export class CardResultComponent implements OnInit {
   testDB: any = null;
   accordionIsOpen: boolean = false;
-  activePreloader: Boolean = true;
+  // activePreloader: Boolean = true;
 
   constructor(
     public service: CardService,
@@ -37,14 +37,14 @@ export class CardResultComponent implements OnInit {
     }
   }
 
-  ngAfterContentInit(): void {
-    document.addEventListener("DOMContentLoaded", () => {
-      setTimeout(() => {
-        this.activePreloader = false;
-        console.log('Loaded');
-      }, 200);
-    });
-  }
+  // ngAfterContentInit(): void {
+  //   document.addEventListener("DOMContentLoaded", () => {
+  //     setTimeout(() => {
+  //       this.activePreloader = false;
+  //       console.log('Loaded');
+  //     }, 200);
+  //   });
+  // }
 
   @ViewChild('content', { static: true }) el!: ElementRef<HTMLImageElement>;
 
