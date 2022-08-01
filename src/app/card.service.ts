@@ -50,7 +50,7 @@ export class CardService {
     beginner: {
       levelName: 'Beginner',
       // imgUrl: '/assets/images/dude-beginner.png',
-      alt: 'Beginner stone'
+      alt: 'Beginner'
     },
     junior: {
       levelName: 'Junior designer',

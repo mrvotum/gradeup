@@ -53,8 +53,8 @@ export class CardPanelComponent implements OnInit {
     this.service.isQuizStartedState = false;
     this.service.activePreloader = true;
 
-    this.service.progressInfo.maxScore = 140;
-    this.service.progressInfo.totalScore = 86;
+    this.service.progressInfo.maxScore = 500;
+    this.service.progressInfo.totalScore = 300;
 
     this.service.statistic = [
       {
@@ -177,15 +177,15 @@ export class CardPanelComponent implements OnInit {
 
     this.service.progressInfo.totalScore = Math.round(scoreInPoints);
 
-    if (scoreInPercent < 20) {
+    if (scoreInPercent <= 20) {
       this.service.levelGrade = this.service.levelData.beginner;
-    } else if (scoreInPercent > 21 && scoreInPercent < 40) {
+    } else if (scoreInPercent > 20 && scoreInPercent <= 40) {
       this.service.levelGrade = this.service.levelData.junior;
-    } else if (scoreInPercent > 41 && scoreInPercent < 60) {
+    } else if (scoreInPercent > 40 && scoreInPercent <= 60) {
       this.service.levelGrade = this.service.levelData.middle;
-    } else if (scoreInPercent > 61 && scoreInPercent < 80) {
+    } else if (scoreInPercent > 60 && scoreInPercent <= 80) {
       this.service.levelGrade = this.service.levelData.senior;
-    } else if (scoreInPercent > 81) {
+    } else if (scoreInPercent > 80) {
       this.service.levelGrade = this.service.levelData.lead;
     }
 
