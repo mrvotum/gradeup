@@ -10,7 +10,10 @@
 	// -панель с кнопкой и отступом -внутренние отступы layout'а
 	max-height: calc(100vh - (144px + 40px) - 24px * 2 + 16px);
 	// margin-top: -28px;
-
+	opacity: 1;
+	transform: translateY(0);
+	transition: opacity 0.4s ease-in-out,
+				transform 0.4s ease-in-out;
 	overflow-y: scroll;
 
 	// Ширина всей полосы прокрутки
@@ -31,6 +34,12 @@
 	}
 
 	&--hidden {
+		// display: none;
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+
+	&[data-current="false"] {
 		display: none;
 	}
 

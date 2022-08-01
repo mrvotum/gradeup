@@ -66,10 +66,10 @@ export class CardComponent implements OnInit {
     this.service.progressInfo.currentQuestion = Number(currentQuestionIs);
 
     // Костыльно переходим к следующему вопросу
-    // this.nextBtn = document.getElementById('btn--next');
-    // setTimeout(() => {
-    //   this.nextBtn?.click();
-    // }, 200);
+    this.nextBtn = document.getElementById('btn--next');
+    setTimeout(() => {
+      this.nextBtn?.click();
+    }, 200);
  }
 
 }

@@ -243,11 +243,19 @@ export class CardPanelComponent implements OnInit {
         const nextQuestion = document.querySelector(`[data-question-holder='${this.service.progressInfo.currentQuestion}']`);
 
         if (nextQuestion) {
-          element.setAttribute('data-current', 'false');
           element.classList.add('card--hidden');
 
-          nextQuestion?.classList.remove('card--hidden');
-          nextQuestion?.setAttribute('data-current', 'true');
+          // За это время проходит анимация скрытия
+          // и потом исчезает (display: none)
+          setTimeout(() => {
+            element.setAttribute('data-current', 'false');
+            nextQuestion?.setAttribute('data-current', 'true');
+          }, 400);
+
+          // Анимация появления
+          setTimeout(() => {
+            nextQuestion?.classList.remove('card--hidden');
+          }, 410);
 
           if (!isNext && nextQuestion.getAttribute('data-first') == 'true') {
             this.service.disabled.prev = true;
