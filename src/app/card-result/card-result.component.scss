@@ -22,13 +22,13 @@
 			opacity: 0.1;
 			left: -1px;
 
-      $children: 2, 3, 4, 5;
+			$children: 2, 3, 4, 5;
 
-      @each $child in $children {
-        &:nth-child(#{$child}) {
-          left: calc(100% / 5 * #{$child - 1} - 2px);
-        }
-      }
+			@each $child in $children {
+				&:nth-child(#{$child}) {
+					left: calc(100% / 5 * #{$child - 1} - 2px);
+				}
+			}
 		}
 	}
 }
@@ -94,13 +94,13 @@
 			bottom: -50px;
 		}
 
-    $levels: "beginner", "junior", "middle", "senior", "lead";
+	$levels: "beginner", "junior", "middle", "senior", "lead";
 
-    @each $level in $levels {
-      &[data-image="#{$level}"] {
-        background-image: url('/assets/images/dude-#{$level}.png');
-      }
-    }
+	@each $level in $levels {
+		&[data-image="#{$level}"] {
+		background-image: url('/assets/images/dude-#{$level}.png');
+		}
+	}
 	}
 }
 
@@ -191,16 +191,12 @@
 	justify-content: space-between;
 	padding: 38px;
 
-	.prompt {
-		max-width: 376px;
-	}
-
 	&--print-v {
 		display: none;
 	}
 
 	.btn {
-		padding: 16px 24px;
+		padding: 16px 60px;
 		min-width: 154px;
 
 		&:last-child {
@@ -256,11 +252,6 @@
 
 	.card__footer {
 		flex-direction: column;
-
-		.prompt {
-			max-width: none;
-			margin-bottom: 12px;
-		}
 	}
 
 	.competence-map__legend-el {
@@ -287,21 +278,26 @@
 		&__footer {
 			padding: 20px;
 
-			.prompt {
-				margin-bottom: 16px;
-				align-self: flex-start;
-			}
-
-			.btn__wrapper {
-				width: 100%;
-			}
-
 			.btn {
-				width: calc(50% - 4px);
+				width: 100%;
 				min-width: auto;
+				font-size: 18px;
 
 				&:last-child {
-					margin-left: 8px;
+					margin-left: 0;
+				}
+
+				&--colored {
+					background-color: var(--color-secondary);
+					color: var(--color-black);
+
+					&:hover {
+						background-color: var(--color-secondary--hover);
+					}
+
+					&:active {
+						background-color: var(--color-secondary--active);
+					}
 				}
 			}
 		}

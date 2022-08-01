@@ -9,6 +9,8 @@
 @import './styles/card.scss';
 // Стили кнопок
 @import './styles/buttons';
+// Подсказка про скачивание картинок (для постов)
+@import './styles/prompt.scss';
 
 .hidden {
   display: none;

@@ -25,34 +25,31 @@
 
       <div class="score">Score: {{service.progressInfo.totalScore}}</div>
       <div class="result__img" [attr.data-image]="service.levelGrade.alt | lowercase"></div>
-      <!-- <img class="result__img"
-        [attr.src]="service.levelGrade.imgUrl"
-        [attr.alt]="service.levelGrade.alt"> -->
     </div>
 
     <div class="card__footer">
       <div class="prompt">
-        Скачайте нужный формат результатов,<br class="hidden show-xs"> чтобы поделиться&nbsp;им
-      </div>
-      <div class="btn__wrapper">
-        <button class="btn">Сторис<br>в инсту</button>
-        <button class="btn" (click)="exportImgResult()">Пост<br>квадратный</button>
+        <div class="prompt__col">
+          <strong>Скачайте результаты</strong>
+          <span class="prompt__text">Они не&nbsp;сохранятся на&nbsp;сайте</span>
+        </div>
+        <button class="btn btn--colored" (click)="exportImgResult()">Скачать</button>
       </div>
     </div>
   </div>
 
-  <div class="card card--with-aside">
+  <div class="card"> <!-- card--with-aside -->
     <div class="card__title">
       <div class="title">Карта компетенций</div>
     </div>
 
-    <div class="custom__aside">
+    <!-- <div class="custom__aside">
       <div class="prompt prompt--fixed">
         <strong>Скачайте результаты</strong>
-        <span>Они не&nbsp;сохранятся на&nbsp;сайте</span>
+        <span class="prompt__text">Они не&nbsp;сохранятся на&nbsp;сайте</span>
         <button class="btn btn--colored" (click)="exportImgResult()">Скачать</button>
       </div>
-    </div>
+    </div> -->
 
     <div class="legend">
       <span class="legend__el">Новичок</span>
@@ -68,8 +65,6 @@
           <span [innerHTML]="service.testDB[i].theme"></span>
           <sup>{{ i + 1 }}</sup>
         </span>
-        <!-- <span class="competence-map__bar-legend">{{ service.testDB[i].theme }}<sup>{{ i + 1 }}</sup></span> -->
-        <!-- <span style="position: absolute;left: 20px;top: 50%;transform: translateY(-50%);">{{ bar.categoryTotalScore }} из {{ bar.categoryMaxScore }}</span> -->
       </div>
     </div>
     <div class="accordion">
