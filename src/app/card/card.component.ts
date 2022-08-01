@@ -11,6 +11,7 @@ import { TestReaderService } from '../test-reader.service';
 export class CardComponent implements OnInit {
   testDB: any = null;
   questionsArr: any = null;
+  nextBtn: any = document.getElementById('btn--next');
 
   constructor(
     public service: CardService,
@@ -54,7 +55,7 @@ export class CardComponent implements OnInit {
     return attrResult;
   }
 
-  unlockNextQuestion(currentQuestionIs: Number, islastQuestion?: Boolean){
+  unlockNextQuestion(currentQuestionIs: Number){
     if (this.service.questionsAnswered[0][`questionN${currentQuestionIs}`] == false) {
       // Указываем следующий шаг прогрессбара
       this.service.progressInfo.unlockedQuestionsCount += 1;
@@ -63,6 +64,12 @@ export class CardComponent implements OnInit {
     }
 
     this.service.progressInfo.currentQuestion = Number(currentQuestionIs);
+
+    // Костыльно переходим к следующему вопросу
+    this.nextBtn = document.getElementById('btn--next');
+    setTimeout(() => {
+      this.nextBtn?.click();
+    }, 200);
  }
 
 }
