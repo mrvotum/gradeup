@@ -13,6 +13,7 @@ import { CardInstructionComponent } from './card-instruction/card-instruction.co
 import { ResultsPageComponent } from './results-page/results-page.component';
 import { CardResultComponent } from './card-result/card-result.component';
 import { PreloaderComponent } from './preloader/preloader.component';
+import { BannerComponent } from './banner/banner.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PreloaderComponent } from './preloader/preloader.component';
     CardInstructionComponent,
     ResultsPageComponent,
     CardResultComponent,
-    PreloaderComponent
+    PreloaderComponent,
+    BannerComponent
   ],
   imports: [
     BrowserModule,

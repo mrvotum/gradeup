@@ -9,6 +9,7 @@
 	transition: background-color 0.2s ease-in-out;
 	background-color: var(--color-secondary);
 	color: var(--color-black);
+	text-decoration: none;
 
 	&:hover {
 		background-color: var(--color-secondary--hover);
@@ -20,6 +21,18 @@
 
 	&:disabled {
 		color: var(--color-secondary--disable);
+	}
+
+	&--white {
+		background-color: var(--color-white);
+
+		&:hover {
+			background-color: var(--color-white-smoke);
+		}
+
+		&:active {
+			background-color: var(--color-whisper);
+		}
 	}
 }
 
