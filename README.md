@@ -2,26 +2,23 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.3.
 
-## Development server
+## Проект
+Сервис называется Gradeup.
+На данном этапе он представляет собой тест для оценки навыков продуктового дизайнера. После прохождения теста, пользователь получает персональную карту компетенций, отображающую его общий уровень и точки роста до следующего грейда.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Планы на будущее
+1. Переосмыслить тест. Названия навыков будут понятней, как и ответы к ним, скиллы разделим на основные, дополнительные и управленческие
+2. Добавить персональные рекомендации. Мы продумываем, какими они будут
+3. Развивать соц-сети. Будем держать в курсе развития проекта
+4. Сделать брендинг. Он будет крутой — обещаем
 
-## Code scaffolding
+## Послесловие
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Это MVP-версия продукта, которая требует развития. В [телеграм-канале проекта](https://t.me/gradeuper) наши планы описаны более подробно.
 
-## Build
+Уже сейчас можно [пройти тест](https://gradeup.vercel.app/) и получить персональную карту компетенций!
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+В проекте принимают участие:
+- [Владислав Воркель](https://t.me/designvorkel) (продакт менеджер, продуктовый дизайнер);
+- [Олеся Мартынова](https://t.me/lesya_dsgn) (комдиз, 3D);
+- [Владимир Мельников](https://t.me/mr_votum) (разработка);
