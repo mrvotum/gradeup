@@ -97,6 +97,7 @@
 
 	&__info {
 		position: absolute;
+		display: flex;
 		background-color: var(--color-secondary);
 		padding: 4px 10px;
 		border-radius: 50px;
