@@ -95,7 +95,7 @@ ul {
 		position: relative;
 		border: 2px solid var(--color-whisper);
 		border-radius: 16px;
-		display: inline-block;
+		display: flex;
 		width: 100%;
 		cursor: pointer;
 		font-size: 1em;
@@ -110,7 +110,7 @@ ul {
 		&::before {
 			counter-increment: answerCounter;
 			content: counter(answerCounter);
-			display: inline-block;
+			display: block;
 			font-weight: 600;
 			margin-right: 16px;
 		}
