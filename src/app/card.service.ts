@@ -16,7 +16,7 @@ export class CardService {
   // Тут будет информация о том, какие вопросы уже пройдены
   questionsAnswered: any = [];
 
-  isQuizStartedState = false;
+  isQuizStartedState = true;
   quizeFisrtInit = true;
 
   progressInfo = {
