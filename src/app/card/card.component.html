@@ -20,9 +20,7 @@
 				(click)="unlockNextQuestion(question.questionCount)">
 
 				<input type="radio" [attr.name]='createId("question", i, j)'  [attr.id]='createId("question", i, j, k)' value={{k}} [attr.data-questions-block]='i + 1'>
-				<span class="answer__el">
-					<strong>{{k}}</strong>{{answer}}
-				</span>
+				<span class="answer__el" [innerHTML]="answer"></span>
 			</label>
 		</div>
 	</div>
