@@ -15,6 +15,8 @@ export class CardInstructionComponent implements OnInit {
 
     this.service.isQuizStartedState = false;
     this.service.quizeFisrtInit = false;
+
+    document.querySelector('.layout.test-started')?.classList.add('start-page');
   }
 
 }

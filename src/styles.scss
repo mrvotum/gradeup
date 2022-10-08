@@ -13,11 +13,10 @@
 @import './styles/prompt.scss';
 
 .hidden {
-  display: none;
+	display: none;
 }
 
 .layout {
-	background-color: var(--color-body);
 	padding: 24px;
 	min-height: 100vh;
 	box-sizing: border-box;
@@ -28,6 +27,36 @@
 	font-weight: 300;
 	align-items: center;
 	margin: 0;
+	background-color: var(--color-body);
+
+	&.start-page {
+		position: relative;
+
+		background-color: var(--color-primary);
+		background-image: url('./assets/images/main-bg.png');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+
+		&::before {
+			position: absolute;
+			content: '';
+			top: 0;
+			left: 0;
+			background-image: url('./assets/images/main-dude.png');
+			width: 100%;
+			height: 100%;
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center;
+		}
+
+		.logo,
+		.about,
+		.footer {
+			display: none;
+		}
+	}
 }
 
 .app-root {
@@ -74,6 +103,10 @@
 		&:hover {
 			color: var(--color-primary--hover);
 		}
+
+		.start-page & {
+			display: none;
+		}
 	}
 }
 
@@ -98,13 +131,13 @@ div {
 // }
 
 @media screen and (max-width: 520px) {
-  .show-xs {
-    display: block;
-  }
+	.show-xs {
+		display: block;
+	}
 
-  .hide-xs {
-    display: none !important;
-  }
+	.hide-xs {
+		display: none !important;
+	}
 
 	.main-header,
 	.main-footer {
@@ -123,7 +156,7 @@ div {
 		left: 0;
 	}
 
-  .body--results {
-    background-color: var(--color-white-smoke);
-  }
+	.body--results {
+		background-color: var(--color-white-smoke);
+	}
 }

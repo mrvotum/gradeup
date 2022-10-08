@@ -7,8 +7,7 @@ import { CardComponent } from './card/card.component';
 import { ResultsPageComponent } from './results-page/results-page.component';
 
 const routes: Routes = [
-  // { path: '', component: CardInstructionComponent },
-  { path: '', component: CardComponent },
+  { path: '', component: CardInstructionComponent },
   { path: 'about', component: AboutComponent },
   { path: 'questions', component: CardComponent },
   { path: 'results', component: ResultsPageComponent }

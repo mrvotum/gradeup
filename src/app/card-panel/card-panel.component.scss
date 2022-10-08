@@ -14,6 +14,7 @@
 
 	&--instruction {
 		justify-content: center;
+		background-color: transparent;
 	}
 }
 
@@ -22,8 +23,14 @@
 	pointer-events: none;
 }
 
+.btn--start {
+	padding: 1.27em 3.98em;
+
+	font-size: 1.96em;
+	line-height: 120%;
+}
+
 .btn--next,
-.btn--start,
 .btn--results {
 	background-color: var(--color-primary);
 	color: var(--color-white);

@@ -21,6 +21,8 @@ export class CardComponent implements OnInit {
   ngOnInit(): void {
     const bodyMain = document.querySelector('body');
     bodyMain?.classList.add('test-started');
+    bodyMain?.classList.remove('start-page');
+
     if (bodyMain?.classList.contains('body--results')) {
       bodyMain?.classList.remove('body--results');
     }

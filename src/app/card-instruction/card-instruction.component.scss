@@ -16,6 +16,14 @@
 	}
 }
 
+.title {
+	font-size: 2.8em;
+	line-height: 100%;
+	max-width: 540px;
+	margin: auto;
+	color: var(--color-white);
+}
+
 @media screen and (max-width: 520px) {
 	.card {
 		padding: 0;
