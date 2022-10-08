@@ -8,17 +8,18 @@ import html2canvas from 'html2canvas';
   selector: 'app-card-result',
   templateUrl: './card-result.component.html',
   styleUrls: ['./card-result.component.scss'],
-  providers: [ TestReaderService ]
+  providers: [ TestReaderService ],
 })
 export class CardResultComponent implements OnInit {
   testDB: any = null;
+
   accordionIsOpen: boolean = false;
   // activePreloader: Boolean = true;
 
   constructor(
     public service: CardService,
-    private serviceReader: TestReaderService
-    ) { }
+    private serviceReader: TestReaderService,
+  ) { }
 
   ngOnInit(): void {
     this.serviceReader.getJSON().subscribe(data => {

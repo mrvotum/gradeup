@@ -6,7 +6,7 @@ interface LevelGrade {
   alt: string
 }
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CardService {
   statistic: any = [];
@@ -17,6 +17,7 @@ export class CardService {
   questionsAnswered: any = [];
 
   isQuizStartedState = true;
+
   quizeFisrtInit = true;
 
   progressInfo = {
@@ -37,67 +38,65 @@ export class CardService {
     // Сколько баллов набрано
     totalScore: 0,
     // Какой выявлен уровень
-    grade: 'beginner'
+    grade: 'beginner',
   };
 
   levelGrade: LevelGrade = {
     levelName: 'Beginner',
     // imgUrl: '/assets/images/dude-beginner.png',
-    alt: 'Beginner'
+    alt: 'Beginner',
   };
 
   levelData = {
     beginner: {
       levelName: 'Beginner',
       // imgUrl: '/assets/images/dude-beginner.png',
-      alt: 'Beginner'
+      alt: 'Beginner',
     },
     junior: {
       levelName: 'Junior designer',
       // imgUrl: '/assets/images/dude-junior.png',
-      alt: 'Junior'
+      alt: 'Junior',
     },
     middle: {
       levelName: 'Middle designer',
       // imgUrl: '/assets/images/dude-middle.png',
-      alt: 'Middle'
+      alt: 'Middle',
     },
     senior: {
       levelName: 'Senior designer',
       // imgUrl: '/assets/images/dude-senior.png',
-      alt: 'Senior'
+      alt: 'Senior',
     },
     lead: {
       levelName: 'Lead designer',
       // imgUrl: '/assets/images/dude-lead.png',
-      alt: 'Lead'
-    }
-  }
+      alt: 'Lead',
+    },
+  };
 
   // Блокировка кнопок перехода
   disabled = {
     prev: true,
-    next: true
+    next: true,
   };
 
   testDB: any = [];
 
-  constructor() { }
-
   // Передаём сюда информацию, которую необходимо найти
   testCookie(name: string) {
-    let nameEQ = name + "=";
+    let nameEQ = name + '=';
     let ca = document.cookie.split(';');
     let searchedInfo = '';
 
-    for( let i = 0; i < ca.length; i++ ) {
+    for ( let i = 0; i < ca.length; i++ ) {
       let c = ca[i];
 
-      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
 
       if (c.indexOf(nameEQ) == 0) {
-        searchedInfo = c.substring(nameEQ.length,c.length)
-      };
+        searchedInfo = c.substring(nameEQ.length, c.length);
+      }
 
     }
 
@@ -128,13 +127,13 @@ export class CardService {
       // Сколько баллов набрано
       totalScore: 0,
       // Какой выявлен уровень
-      grade: 'beginner'
+      grade: 'beginner',
     };
 
     this.levelGrade = {
       levelName: 'Beginner',
       // imgUrl: '/assets/images/dude-beginner.png',
-      alt: 'Beginner'
+      alt: 'Beginner',
     };
   }
 }

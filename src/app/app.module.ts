@@ -26,15 +26,15 @@ import { BannerComponent } from './banner/banner.component';
     ResultsPageComponent,
     CardResultComponent,
     PreloaderComponent,
-    BannerComponent
+    BannerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

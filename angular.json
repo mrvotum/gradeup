@@ -20,7 +20,7 @@
             "allowedCommonJsDependencies": [
               "html2canvas",
               "canvg"
-           ],
+            ],
             "outputPath": "dist/gradeup",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -104,11 +104,23 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.component.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TestReaderService {
 
@@ -15,12 +15,12 @@ export class TestReaderService {
 
   constructor(private http: HttpClient) {
     this.getJSON().subscribe(data => {
-        // console.log(data);
+      console.log(data);
     });
   }
 
   public getJSON(): Observable<any> {
-    return this.http.get("../assets/tests-base/designer.json");
+    return this.http.get('../assets/tests-base/designer.json');
   }
 
 }

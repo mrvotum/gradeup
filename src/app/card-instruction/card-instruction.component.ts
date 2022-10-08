@@ -4,7 +4,7 @@ import { CardService } from '../card.service';
 @Component({
   selector: 'app-card-instruction',
   templateUrl: './card-instruction.component.html',
-  styleUrls: ['./card-instruction.component.scss']
+  styleUrls: ['./card-instruction.component.scss'],
 })
 export class CardInstructionComponent implements OnInit {
 

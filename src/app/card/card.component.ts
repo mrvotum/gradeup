@@ -6,17 +6,19 @@ import { TestReaderService } from '../test-reader.service';
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
-  providers: [ TestReaderService ]
+  providers: [ TestReaderService ],
 })
 export class CardComponent implements OnInit {
   testDB: any = null;
+
   questionsArr: any = null;
+
   nextBtn: any = document.getElementById('btn--next');
 
   constructor(
     public service: CardService,
-    private serviceReader: TestReaderService
-    ) { }
+    private serviceReader: TestReaderService,
+  ) { }
 
   ngOnInit(): void {
     const bodyMain = document.querySelector('body');
@@ -57,7 +59,7 @@ export class CardComponent implements OnInit {
     return attrResult;
   }
 
-  unlockNextQuestion(currentQuestionIs: Number){
+  unlockNextQuestion(currentQuestionIs: Number) {
     if (this.service.questionsAnswered[0][`questionN${currentQuestionIs}`] == false) {
       // Указываем следующий шаг прогрессбара
       this.service.progressInfo.unlockedQuestionsCount += 1;
@@ -72,6 +74,6 @@ export class CardComponent implements OnInit {
     // setTimeout(() => {
     //   this.nextBtn?.click();
     // }, 200);
- }
+  }
 
 }
