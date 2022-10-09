@@ -13,8 +13,16 @@
               transform 0.4s ease-in-out;
 
 	&--instruction {
-		justify-content: center;
-		background-color: transparent;
+		padding: 13px 12px 13px 44px;
+		max-width: 890px;
+		margin: auto;
+		
+		.btn__label {
+			color: var(--color-purple-heart);
+			font-weight: 600;
+			font-size: 1.8em;
+			line-height: 110%;
+		}
 	}
 }
 
@@ -24,12 +32,14 @@
 }
 
 .btn--start {
-	padding: 1.27em 3.98em;
+	padding: 2.6em 3.98em;
 
-	font-size: 1.96em;
+	font-size: 1em;
 	line-height: 120%;
+	border-radius: 24px;
 }
 
+.btn--start,
 .btn--next,
 .btn--results {
 	background-color: var(--color-primary);
@@ -143,6 +153,27 @@
 	}
 }
 
+@media screen and (max-width: 1056px) {
+	.btn__holder--instruction {
+		.btn__label {
+			font-size: 30px;
+		}
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.btn__holder--instruction {
+		.btn__label {
+			font-size: 22px;
+		}
+	}
+
+	.btn--start {
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+}
+
 @media screen and (max-width: 520px) {
 	.btn__holder {
 		padding: 16px;
@@ -215,5 +246,28 @@
 		.btn__text {
 			display: none;
 		}
+	}
+
+	.btn__holder {
+		padding: 24px 16px;
+	
+		&--instruction {
+			flex-direction: column;
+			
+			
+			.btn__label {
+				font-size: 20px;
+				line-height: 120%;
+				margin-bottom: 16px;
+				text-align: center;
+			}
+		}
+	}
+
+	.btn--start {
+		width: calc(100% - 32px);
+		padding: 23px;
+	
+		font-size: 18px;
 	}
 }
